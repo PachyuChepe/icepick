@@ -47,7 +47,7 @@
       }
 
       .showstart {
-        margin: 0 5% 0 5%;
+        margin: 3% 5% 0.5% 5%;
         position: relative; /* 부모 요소의 위치를 상대적으로 설정 */
         /* max-width: 100%; */
       }
@@ -69,10 +69,26 @@
         align-items: center;
       }
 
+      @keyframes fade {
+        0% {
+          opacity: 0;
+        }
+        25% {
+          opacity: 1;
+        }
+        75% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
       .slideshow img {
         display: none; /* 이미지를 숨김 */
         width: 100%; /* 이미지 폭을 100%로 설정하여 부모 요소에 맞춤 */
         height: auto;
+        animation: fade 5s linear infinite;
       }
 
       /* 화살표 스타일 설정 */
@@ -139,7 +155,7 @@
       }
 
       .character-name-div {
-        margin: 10px 0px 0px 0px;
+        margin: 10px 0px 20px 0px;
       }
     </style>
     <script>
@@ -218,8 +234,9 @@
     </div>
 
     <script>
-      // 현재 표시된 슬라이드의 인덱스
-      let currentSlide = 0;
+      // 전역 변수 선언
+      let currentSlide = 0; // 현재 표시된 슬라이드의 인덱스
+      let slideTimer; // 자동 슬라이드 타이머 변수
 
       // 이미지 슬라이드 함수
       function showSlide(n) {
@@ -240,6 +257,12 @@
 
         // 새로운 슬라이드를 표시
         slides[currentSlide].style.display = "block";
+
+        // 자동 슬라이드 타이머 재설정 (5초 후에 자동으로 다음 슬라이드로 이동)
+        clearInterval(slideTimer);
+        slideTimer = setInterval(function () {
+          plusSlides(1); // 1은 다음 슬라이드로 이동
+        }, 5000); // 5000밀리초(5초) 간격으로 실행
       }
 
       // 이전 슬라이드 표시
