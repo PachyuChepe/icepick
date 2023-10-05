@@ -1,194 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>아이스픽</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <style>
-      @font-face {
-        font-family: "NeoDunggeunmoPro-Regular";
-        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2")
-          format("woff2");
-        font-weight: normal;
-        font-style: normal;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>아이스픽</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <style>
+    @font-face {
+      font-family: "NeoDunggeunmoPro-Regular";
+      src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      font-family: "NeoDunggeunmoPro-Regular";
+    }
+
+    .main {
+      color: white;
+
+      background-image: url('https://usagif.com/wp-content/uploads/2022/4hv9xm/dancing-duck-acegifcom-73.gif');
+      background-position: center;
+      background-size: cover;
+    }
+
+    body {
+      background-color: black;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: absolute;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      top: 0;
+      left: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      position: relative;
+      background-color: black;
+      margin: auto;
+      padding: 0;
+      border: 1px solid #888;
+      width: 40%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      -webkit-animation-name: animatetop;
+      -webkit-animation-duration: 0.4s;
+      animation-name: animatetop;
+      animation-duration: 0.4s
+    }
+
+    /* Add Animation */
+    @-webkit-keyframes animatetop {
+      from {
+        top: -300px;
+        opacity: 0
       }
 
-      * {
-        font-family: "NeoDunggeunmoPro-Regular";
-      }
-
-      body {
-        background-color: gray;
-      }
-
-      /* The Modal (background) */
-      .modal {
-        display: none;
-        /* Hidden by default */
-        position: absolute;
-        /* Stay in place */
-        z-index: 1;
-        /* Sit on top */
-        padding-top: 100px;
-        /* Location of the box */
+      to {
         top: 0;
-        left: 0;
-        width: 100%;
-        /* Full width */
-        height: 100%;
-        /* Full height */
+        opacity: 1
+      }
+    }
 
-        overflow: auto;
-        /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0);
-        /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4);
-        /* Black w/ opacity */
+    @keyframes animatetop {
+      from {
+        top: -300px;
+        opacity: 0
       }
 
-      /* Modal Content */
-      .modal-content {
-        position: relative;
-        background-color: black;
-        margin: auto;
-        padding: 0;
-        border: 1px solid #888;
-        width: 40%;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        -webkit-animation-name: animatetop;
-        -webkit-animation-duration: 0.4s;
-        animation-name: animatetop;
-        animation-duration: 0.4s;
+      to {
+        top: 0;
+        opacity: 1
       }
+    }
 
-      /* Add Animation */
-      @-webkit-keyframes animatetop {
-        from {
-          top: -300px;
-          opacity: 0;
-        }
+    /* The Close Button */
+    .close {
+      color: white;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-        to {
-          top: 0;
-          opacity: 1;
-        }
-      }
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-      @keyframes animatetop {
-        from {
-          top: -300px;
-          opacity: 0;
-        }
+    .modal-header {
+      padding: 2px 16px;
+      background-color: black;
+      color: white;
+    }
 
-        to {
-          top: 0;
-          opacity: 1;
-        }
-      }
+    .modal-body {
+      margin: 10px auto;
+    }
 
-      /* The Close Button */
-      .close {
-        color: white;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-      }
+    .form-control {
+      width: 100%;
+      font-size: 25px;
+    }
 
-      .close:hover,
-      .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-      }
+    label {
+      color: white;
+    }
 
-      .modal-header {
-        padding: 2px 16px;
-        background-color: black;
-        color: white;
-      }
+    .modal-footer {
+      padding: 2px 16px;
+      background-color: black;
+      color: white;
+    }
 
-      .modal-body {
-        margin: 10px auto;
-      }
+    .cards {
+      width: 65%;
+      margin: 0 auto;
+    }
 
-      .form-control {
-        width: fit-content;
-        height: fit-content;
-        margin: auto auto auto 150px;
-      }
+    .card {
+      background-color: transparent;
+      width: auto;
+      position: absolute;
+    }
 
-      label {
-        color: white;
-      }
+    .card-footer {
+      margin: 0 auto;
+    }
 
-      .modal-footer {
-        padding: 2px 16px;
-        background-color: black;
-        color: white;
-      }
-    </style>
+    .card img {
+      width: 100px;
+      height: 150px;
+    }
+  </style>
 
-    <script type="module">
-      // Firebase SDK 라이브러리 가져오기
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-      import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-      import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-      import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+  <script type="module">
 
-      // 10-04 파이어베이스 미정
-      const firebaseConfig = {
-        apiKey: "AIzaSyDdwgoVk492KWWNXqHCNiN-5Ty21xW5Avs",
-        authDomain: "ccxxyy-ec619.firebaseapp.com",
-        projectId: "ccxxyy-ec619",
-        storageBucket: "ccxxyy-ec619.appspot.com",
-        messagingSenderId: "399817412577",
-        appId: "1:399817412577:web:3210e036c4cad3162d4ca0",
-        measurementId: "G-5MF2W7SFPN",
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+    // 10-04 파이어베이스 미정
+    const firebaseConfig = {
+      apiKey: "AIzaSyDdwgoVk492KWWNXqHCNiN-5Ty21xW5Avs",
+      authDomain: "ccxxyy-ec619.firebaseapp.com",
+      projectId: "ccxxyy-ec619",
+      storageBucket: "ccxxyy-ec619.appspot.com",
+      messagingSenderId: "399817412577",
+      appId: "1:399817412577:web:3210e036c4cad3162d4ca0",
+      measurementId: "G-5MF2W7SFPN"
+    };
+
+
+    // Firebase 인스턴스 초기화
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    $("#postingbtn").click(async function () {
+      let image = $('#image').val();
+      let name = $('#name').val();
+      let hobby = $('#hobby').val();
+      let MBTI = $('#MBTI').val();
+      let speech = $('#speech').val();
+
+      let doc = {
+        'image': image,
+        'name': name,
+        'hobby': hobby,
+        'MBTI': MBTI,
+        'speech': speech
       };
+      await addDoc(collection(db, "teammate"), doc);
+      alert('등록 완료');
+      window.location.reload();
+    })
 
-      // Firebase 인스턴스 초기화
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
+    let docs = await getDocs(collection(db, "teammate"));
+    docs.forEach((doc) => {
+      let row = doc.data();
+      console.log(row);
 
-      $("#postingbtn").click(async function () {
-        let image = $("#image").val();
-        let name = $("#name").val();
-        let hobby = $("#hobby").val();
-        let MBTI = $("#MBTI").val();
-        let speech = $("#speech").val();
+      let image = row['image'];
+      let name = row['name'];
+      let hobby = row['hobby'];
+      let MBTI = row['MBTI'];
+      let speech = row['speech'];
 
-        let doc = {
-          image: image,
-          name: name,
-          hobby: hobby,
-          MBTI: MBTI,
-          speech: speech,
-        };
-        await addDoc(collection(db, "teammate"), doc);
-        alert("등록 완료");
-        window.location.reload();
-      });
-
-      let docs = await getDocs(collection(db, "teammate"));
-      docs.forEach((doc) => {
-        let row = doc.data();
-        console.log(row);
-
-        let image = row["image"];
-        let name = row["name"];
-        let hobby = row["hobby"];
-        let MBTI = row["MBTI"];
-        let speech = row["speech"];
-
-        // 10-04 카드 형식 미정
-        let temp_html = `
+      // 10-04 카드 형식 미정
+      let temp_html = `
       <div class="col">
           <div class="card h-100">
               <img src="${image}"
@@ -202,98 +227,163 @@
               </div>
           </div>
       </div>`;
-        $("#card").append(temp_html);
-      });
-    </script>
-  </head>
+      $('#card').append(temp_html);
+    });
 
-  <body>
-    <header class="p-3 text-bg-dark">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-          </a>
+  </script>
 
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li>
-              <a href="#" class="nav-link px-2 text-secondary"
-                ><img
-                  src="https://blog.kakaocdn.net/dn/nPHIX/btswbChyDep/Id9lRpNNLWqQXr9vGiWgR1/img.gif"
-                  style="width: 20px; height: 20px"
-                  alt="My Image"
-              /></a>
-            </li>
-            <li><a href="#" class="nav-link px-2 text-white">비익조</a></li>
-          </ul>
+</head>
 
-          <div class="text-end">
-            <!-- Trigger/Open The Modal -->
-            <button id="mybtn" class="btn btn-warning">팀원 등록</button>
+<body>
+  <header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
 
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-              <!-- Modal content -->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <span class="close">&times;</span>
-                  <h2 id="signin">비익조 팀원 등록</h2>
-                </div>
-                <div class="modal-body">
-                  <div class="mypostingbox" id="postingbox">
-                    <div class="form-floating mb-3">
-                      <label for="floatingInput">캐릭터 사진</label>
-                      <input type="email" class="form-control" id="image" />
-                    </div>
-                    <div class="form-floating mb-3">
-                      <label for="floatingInput">이름</label>
-                      <input type="email" class="form-control" id="name" />
-                    </div>
-                    <div class="form-floating mb-3">
-                      <label for="floatingInput">취미</label>
-                      <input type="email" class="form-control" id="hobby" />
-                    </div>
-                    <div class="form-floating mb-3">
-                      <label for="floatingInput">MBTI</label>
-                      <input type="email" class="form-control" id="MBTI" />
-                    </div>
-                    <div class="form-floating mb-3">
-                      <label for="floatingInput">대사</label>
-                      <input type="email" class="form-control" id="speech" />
-                    </div>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li>
+            <a href="#" class="nav-link px-2 text-secondary"><img
+                src="https://blog.kakaocdn.net/dn/nPHIX/btswbChyDep/Id9lRpNNLWqQXr9vGiWgR1/img.gif"
+                style="width: 20px; height: 20px" alt="My Image" /></a>
+          </li>
+          <li><a href="#" class="nav-link px-2 text-white">비익조</a></li>
+        </ul>
+
+        <div class="text-end">
+          <!-- Trigger/Open The Modal -->
+          <button id="mybtn" class="btn btn-warning">팀원 등록</button>
+
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 id="signin">비익조 팀원 등록</h2>
+              </div>
+              <div class="modal-body">
+                <div class="mypostingbox" id="postingbox">
+                  <div class="mb-3">
+                    <label for="floatingInput">캐릭터 사진</label>
+                    <input class="form-control" id="image">
+                  </div>
+                  <div class="mb-3">
+                    <label for="floatingInput">이름</label>
+                    <input class="form-control" id="name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="floatingInput">취미</label>
+                    <input class="form-control" id="hobby">
+                  </div>
+                  <div class="mb-3">
+                    <label for="floatingInput">MBTI</label>
+                    <input class="form-control" id="MBTI">
+                  </div>
+                  <div class="">
+                    <label for="floatingInput">대사</label>
+                    <input class="form-control" id="speech">
                   </div>
                 </div>
-                <div class="modal-footer">
-                  <button id="postingbtn" type="button" class="btn btn-primary">팀원 등록</button>
-                </div>
+              </div>
+              <div class="modal-footer">
+                <button id="postingbtn" type="button" class="btn btn-primary">팀원 등록</button>
               </div>
             </div>
+
           </div>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <script>
-      // Get the modal
-      var modal = document.getElementById("myModal");
+  <div class="main">
+    <div class="container-fluid py-5">
+      <h1 id="title" class="display-5 fw-bold"></h1>
+      <p class="col-md-8 fs-4"></p>
+    </div>
+  </div>
 
-      // Get the button that opens the modal
-      var btn = document.getElementById("mybtn");
+  <div class="cards">
+    <div id="card" class="row row-cols-1 row-cols-md-5 g-4">
+      <div class="col">
+        <div class="card">
+          <img
+            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqoATE%2FbtswbGEiJlK%2FYGbpCkFqBeKyLgdQOSPyfk%2Fimg.png"
+            class="card-img-top" alt="...">
+          <div class="card-footer">
+            <button id="detail" class="btn btn-warning">이름
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img
+            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcDUdfu%2FbtswcIaUMpv%2FkWI01UcouLzyNrn8LcsEkK%2Fimg.png"
+            class="card-img-top" alt="...">
+          <div class="card-footer">
+            <button id="detail" class="btn btn-warning">이름</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img
+            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbyXvTx%2FbtswPT9UbAu%2FUzfySWeK2QhxeiXEDfmL91%2Fimg.png"
+            class="card-img-top" alt="...">
+          <div class="card-footer">
+            <button id="detail" class="btn btn-warning">이름</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img
+            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FCeJQS%2FbtswpU2ZKdY%2FNBp3HIbiVshB3Oh9rR2Gzk%2Fimg.png"
+            class="card-img-top" alt="...">
+          <div class="card-footer">
+            <button id="detail" class="btn btn-warning">이름</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img
+            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdO55GN%2Fbtsw66mTinb%2FPZ6XeNHKL5JjArkQpTwyb0%2Fimg.png"
+            class="card-img-top" alt="...">
+          <div class="card-footer">
+            <button id="detail" class="btn btn-warning">이름</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
+  <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
 
-      // When the user clicks the button, open the modal
-      btn.onclick = function () {
-        modal.style.display = "block";
-      };
+    // Get the button that opens the modal
+    var btn = document.getElementById("mybtn");
 
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function () {
-        modal.style.display = "none";
-      };
-    </script>
-  </body>
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
+  </script>
+</body>
+
 </html>
