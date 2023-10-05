@@ -24,11 +24,46 @@
         font-family: "NeoDunggeunmoPro-Regular";
       }
       header {
-        margin: 0px 0px 50px 0px;
+        margin: 0px 0px 10px 0px;
       }
+
+      .custom-button {
+        background-color: #e8344e;
+        color: white;
+      }
+
       body {
         background-color: black;
       }
+
+      .main{
+        background-image: url(https://e1.pxfuel.com/desktop-wallpaper/452/55/desktop-wallpaper-pixel-art-backgrounds-pixel-art-1920x1200-for-your-mobile-tablet.jpg);
+        background-position: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 60%;
+        height: 550px;
+      }
+
+      .mypostingbox {
+            width: 500px;
+            margin: 20px auto 20px auto;
+
+            border: 1px solid white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .mypostingbox > button {
+            width: 100%;
+        }
+
+        .mycards {
+            width: 1200px;
+            margin: 20px auto 20px auto;
+        }
+
+
     </style>
   </head>
   <body>
@@ -40,6 +75,8 @@
               <use xlink:href="#bootstrap"></use>
             </svg>
           </a>
+
+          
 
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li>
@@ -54,10 +91,77 @@
           </ul>
 
           <div class="text-end">
-            <button type="button" class="btn btn-warning">팀 가입</button>
+            <button type="button" class="btn custom-button">팀 가입</button>
           </div>
         </div>
       </div>
     </header>
+
+    <div class="main">
+      </div>
+      <div class="mypostingbox">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="캐릭터 사진">
+            <label for="floatingInput">캐릭터 사진</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="이름">
+            <label for="floatingInput">이름</label>
+        </div>
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">MBTI</label>
+            <select class="form-select">
+                <option selected>MBTI 선택</option>
+                <option value="1">INTP</option>
+                <option value="2">INTJ</option>
+                <option value="3">INFP</option>
+                <option value="4">INFJ</option>
+                <option value="5">ISTP</option>
+                <option value="6">ISTJ</option>
+                <option value="7">ISFP</option>
+                <option value="8">ISFJ</option>
+                <option value="9">ENTP</option>
+                <option value="10">ENTJ</option>
+                <option value="11">ENFP</option>
+                <option value="12">ENFJ</option>
+                <option value="13">ESTP</option>
+                <option value="14">ESTJ</option>
+                <option value="15">ESFP</option>
+                <option value="16">ESFJ</option>
+            </select>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" placeholder="추천 이유">
+            <label for="floatingInput">취미</label>
+        </div>
+        <button type="button" class="btn btn-danger">가입하기</button>
+        </div>
+        <div class="mycards">
+          <div class="row row-cols-1 row-cols-md-4 g-4">
+              <div class="col">
+                  <div class="card h-100">
+                      <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqoATE%2FbtswbGEiJlK%2FYGbpCkFqBeKyLgdQOSPyfk%2Fimg.png"
+                          class="card-img-top" alt="...">
+                      <div class="card-body">
+                          <h5 class="card-title">최이진</h5>
+                          <p class="card-text">INTP</p>
+                          <p class="card-text">책읽기</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="card h-100">
+                      <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbyXvTx%2FbtswPT9UbAu%2FUzfySWeK2QhxeiXEDfmL91%2Fimg.png"
+                          class="card-img-top" alt="...">
+                      <div class="card-body">
+                          <h5 class="card-title">이하늘</h5>
+                          <p class="card-text">INTP</p>
+                          <p class="card-text">게임하기</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
   </body>
 </html>
