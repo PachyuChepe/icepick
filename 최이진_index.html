@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>스파르타플릭스</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>아이스픽</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
   <style>
     @font-face {
       font-family: "NeoDunggeunmoPro-Regular";
@@ -20,13 +20,17 @@
       font-family: "NeoDunggeunmoPro-Regular";
     }
 
-    body {
-      background-color: black;
+    header {
+      margin: 0px 0px 10px 0px;
     }
 
-    .mycards {
-      width: 1200px;
-      margin: 20px auto 20px auto;
+    .custom-button {
+      background-color: #e8344e;
+      color: white;
+    }
+
+    body {
+      background-color: black;
     }
 
     .mypostingbox {
@@ -38,22 +42,210 @@
       border-radius: 5px;
     }
 
-    .form-floating>input {
-      background-color: transparent;
-      color: white;
-    }
-
-    .form-floating>label {
-      color: white;
-    }
-
-    .input-group>label {
-      background-color: transparent;
-      color: white;
-    }
-
     .mypostingbox>button {
       width: 100%;
+    }
+
+    .mycards {
+      width: 1200px;
+      margin: 20px auto 20px auto;
+    }
+
+    #modalOpenButton,
+    #modalCloseButton {
+      cursor: pointer;
+      color: white;
+    }
+
+    #modalContainer {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+
+    #modalContainer.hidden {
+      display: none;
+    }
+
+    #modalContainer {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    #modalContainer.hidden {
+      display: none;
+    }
+
+    #modalContent {
+      position: absolute;
+      background-color: #fe7f9c;
+      width: 550px;
+      height: 850px;
+      padding: 15px;
+      animation-name: animatetop;
+      animation-duration: 0.4s
+    }
+
+    @-webkit-keyframes animatetop {
+      from {
+        top: -800px;
+        opacity: 0
+      }
+
+      to {
+        top: 0;
+        opacity: 1
+      }
+    }
+
+    @keyframes animatetop {
+      from {
+        top: -800px;
+        opacity: 1
+      }
+
+      to {
+        top: 0;
+        opacity: 1
+      }
+    }
+
+    .modal-header {
+      padding: 2px 16px;
+      color: white;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .showstart {
+      margin: 3% 5% 0.5% 5%;
+      position: relative;
+      /* 부모 요소의 위치를 상대적으로 설정 */
+      /* max-width: 100%; */
+    }
+
+    .slideshow-container {
+      position: relative;
+      /* 슬라이드 쇼 컨테이너의 위치를 상대적으로 설정 */
+      display: inline-block;
+      width: 100%;
+      padding: 0 5% 0 5%;
+    }
+
+    .slideshow {
+      position: relative;
+      /* 슬라이드 쇼의 위치를 상대적으로 설정 */
+      overflow: hidden;
+      /* 슬라이드 쇼 영역을 넘어가는 이미지를 숨김 */
+      max-height: 400px;
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes fade {
+      0% {
+        opacity: 0;
+      }
+
+      25% {
+        opacity: 1;
+      }
+
+      75% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .slideshow img {
+      display: none;
+      /* 이미지를 숨김 */
+      width: 100%;
+      /* 이미지 폭을 100%로 설정하여 부모 요소에 맞춤 */
+      height: auto;
+      animation: fade 5s linear infinite;
+    }
+
+    /* 화살표 스타일 설정 */
+    .slideshow-arrow {
+      font-size: 36px;
+      cursor: pointer;
+      position: absolute;
+      /* 절대 위치 설정 */
+      top: 50%;
+      /* 상단 여백을 부모 요소의 중앙에 맞춤 */
+      transform: translateY(-50%);
+      /* 수직 가운데 정렬 */
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      /* border-radius: 50%; 원형 모양으로 설정 */
+    }
+
+    /* .slideshow-arrow {
+				font-size: 30px;
+				cursor: pointer;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				background-color: rgba(0, 0, 0, 0.5);
+				color: white;
+				padding: 10px;
+				z-index: 1;
+			} */
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .image-container img {
+      width: 100px;
+      height: 150px;
+      margin: 5px 90px 5px 90px;
+      overflow: hidden;
+    }
+
+    .mycards {
+      width: 600px;
+      margin: 20px auto 20px auto;
     }
 
     .card-title {
@@ -63,151 +255,167 @@
       padding: 3px 5px 5px 10px;
       margin: auto;
     }
-
-
-    .slide {
-      /* layout */
-      display: flex;
-      flex-wrap: nowrap;
-      /* 컨테이너의 내용물이 컨테이너 크기(width, height)를 넘어설 때 보이지 않도록 하기 위해 hidden을 준다. */
-      overflow: hidden;
-
-      /* position */
-      /* slide_button의 position absolute가 컨테이너 안쪽에서 top, left, right offset이 적용될 수 있도록 relative를 준다. (기본값이 static인데, static인 경우 그 상위 컨테이너로 나가면서 현재 코드에선 html을 기준으로 offset을 적용시키기 때문) */
-      position: relative;
-
-      /* size */
-      width: 100%;
-
-      /* slide drag를 위해 DOM요소가 드래그로 선택되는것을 방지 */
-      user-select: none;
-    }
-
-    .slide_item {
-      /* layout */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      /* position - 버튼 클릭시 left offset값을 적용시키기 위해 */
-      position: relative;
-      left: 0px;
-
-      /* size */
-      width: 100%;
-      height: 300px;
-      /* flex item의 flex-shrink는 기본값이 1이므로 컨테이너 크기에 맞게 줄어드는데, 슬라이드를 구현할 것이므로 줄어들지 않도록 0을 준다. */
-      flex-shrink: 0;
-
-      /* transition */
-      transition: left 0.15s;
-    }
-
-    .slide_button {
-      /* layout */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      /* position */
-      position: absolute;
-      /* 버튼이 중앙에 위치하게 하기위해 계산 */
-      top: calc(50% - 16px);
-
-      /* size */
-      width: 32px;
-      height: 32px;
-
-      /* style */
-      border-radius: 100%;
-      background-color: #cccc;
-      cursor: pointer;
-    }
-
-    .slide_prev_button {
-      left: 10px;
-    }
-
-    .slide_next_button {
-      right: 10px;
-    }
-
-    /* 각 슬라이드가 변경되는 것을 시각적으로 확인하기 쉽도록 각 슬라이드별 색상 적용 */
-    .slide_item.item1 {
-      background-image: url('https://img.freepik.com/premium-photo/video-game-background-landscape-with-mountains-and-forests-in-16-bit-pixels-retro-video-arcade-game-nature-location-with-pixel-art-mountain-hills-snow-peaks-sky-and-clouds-trees-grass-and-lake_685067-3731.jpg');
-      background-position: center bottom;
-      background-size: auto;
-    }
-
-    .slide_item.item2 {
-      background-image: url('https://cdn.class101.net/images/1e2c2cf4-a34a-44eb-9836-1aa47c02d611');
-      background-position: center bottom;
-      background-size: auto;
-    }
-
-    .slide_item.item3 {
-      background-image: url('https://storage.googleapis.com/static.fastcampus.co.kr/prod/uploads/2022-06-20T10:05:52Z/2022-06-20T10:05:52Z-474/%E1%84%83%E1%85%B5%E1%84%8C%E1%85%B3%E1%84%82%E1%85%B5%E1%84%89%E1%85%A5%E1%86%BC%E1%84%8B%E1%85%AE%E1%86%B7%E1%84%8D%E1%85%A1%E1%86%AF.gif');
-      background-position: center bottom;
-      background-size: auto;
-    }
-
-    .slide_item.item4 {
-      background-image: url('https://crepe.land/portfolio/d/dd/ddeckhh79mdohda2k7w9ntamzqdo8huc_220428_%EA%B5%AC%EB%A6%84%ED%95%98%EB%8A%98.gif');
-      background-position: center bottom;
-      background-size: auto;
-    }
-
-    .slide_item.item5 {
-      background-image: url('https://i.pinimg.com/originals/16/89/5b/16895b231b6da505e2e4acef02a3c1fe.gif');
-      background-position: center bottom;
-      background-size: auto;
-    }
-
-    /* 페이지네이션 스타일 */
-    ul,
-    li {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .slide_pagination {
-      /* layout */
-      display: flex;
-      gap: 5px;
-
-      /* position */
-      position: absolute;
-      bottom: 0;
-      /* left:50%, translateX(-50%)를 하면 가로 가운데로 위치시킬 수 있다. */
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .slide_pagination>li {
-      /* 현재 슬라이드가 아닌 것은 투명도 부여 */
-      color: #7fb5ff88;
-      cursor: pointer;
-      font-size: 25px;
-    }
-
-    .slide_pagination>li.active {
-      /* 현재 슬라이드 색상은 투명도 없이 */
-      color: #7fb5ff;
-    }
-
-    .slide_item_duplicate {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      left: 0px;
-      width: 100%;
-      height: 300px;
-      flex-shrink: 0;
-      transition: left 0.15s;
-    }
   </style>
+</head>
+
+<body>
+  <header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
+
+
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li>
+            <a href="#" class="nav-link px-2 text-secondary"><img
+                src="https://blog.kakaocdn.net/dn/nPHIX/btswbChyDep/Id9lRpNNLWqQXr9vGiWgR1/img.gif"
+                style="width: 20px; height: 20px" alt="My Image" /></a>
+          </li>
+          <li><a href="#" class="nav-link px-2 text-white">비익조</a></li>
+        </ul>
+
+        <div class="text-end">
+          <button type="button" class="btn custom-button" id="modalOpenButton">팀 가입</button>
+
+          <div id="modalContainer" class="hidden">
+            <div id="modalContent">
+              <div class="modal-header">
+                <h2><span class="close" id="modalCloseButton">&times;</span></h2>
+                <h3 id="signin">비익조 팀원 등록</h3>
+              </div>
+              <div class="mypostingbox" id="postingbox">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="image" placeholder="캐릭터 이미지 주소">
+                  <label for="floatingInput">캐릭터 이미지 주소</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="mname" placeholder="이름">
+                  <label for="floatingInput">이름</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="lv" placeholder="레벨(나이)">
+                  <label for="floatingInput">레벨(나이)</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="dono" placeholder="도감번호">
+                  <label for="floatingInput">도감번호(생년월일)</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="skills" placeholder="배운 기술">
+                  <label for="floatingInput">배운 기술</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="mbti" placeholder="MBTI">
+                  <label for="floatingInput">MBTI</label>
+                </div>
+
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_p" placeholder="E 수치"><label for="floatingInput">외향형
+                    E
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_i" placeholder="I 수치"><label for="floatingInput">내향형
+                    I
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_s" placeholder="S 수치"><label for="floatingInput">감각형
+                    S
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_n" placeholder="N 수치"><label for="floatingInput">직관형
+                    N
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_t" placeholder="T 수치"><label for="floatingInput">사고형
+                    T
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_f" placeholder="F 수치"><label for="floatingInput">감정형
+                    F
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_j" placeholder="J 수치"><label for="floatingInput">판단형
+                    J
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_p" placeholder="P 수치"><label for="floatingInput">인식형
+                    P
+                    수치</label>
+                </div>
+
+
+
+
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="comment" placeholder="comment">
+                  <label for="floatingInput">한마디</label>
+                </div>
+
+                <button type="button" class="btn btn-danger" id="postingbtn">기록하기</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </header>
+
+  <div class="showstart">
+    <div class="slideshow-container">
+      <div class="slideshow">
+        <!-- 첫 번째 이미지 -->
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhsMI9%2FbtswPVmDhHB%2FvP9B7TR1ewiSSnCRj4S4K0%2Fimg.jpg"
+          alt="Image 1" />
+        <!-- 두 번째 이미지 -->
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbgS8rs%2Fbtsw0iIWDcO%2Fm90kWI4HWk8WoHNLRECaXK%2Fimg.jpg"
+          alt="Image 2" />
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbfon4p%2FbtswJDf4a7a%2Ftb83tAdaKXQ8jXeD3FQW11%2Fimg.jpg"
+          alt="Image 3" />
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnqT97%2Fbtsw0gLf4Tb%2FId80J8BLDB61jCkEtxLd0k%2Fimg.jpg"
+          alt="Image 4" />
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FyGs1I%2Fbtsxd3jz8fQ%2FJSBuuHz6dKFJRZpNkSPjUk%2Fimg.jpg"
+          alt="Image 5" />
+      </div>
+    </div>
+    <span class="slideshow-arrow prev" onclick="plusSlides(-1)">&#10094;</span>
+    <span class="slideshow-arrow next" onclick="plusSlides(1)">&#10095;</span>
+  </div>
+
+  <div class="mycards">
+    <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
+    </div>
+  </div>
+
+
+
+  <div class="main">
+  </div>
+
   <script type="module">
     // Firebase SDK 라이브러리 가져오기
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
@@ -273,7 +481,7 @@
             <div class="col">
                 <div class="card h-100 bg-transparent border-black text-white text-center">
                     <img src="${image}"
-                        class="card-img-top" alt="...">
+                        class="card-img-top" alt="..." style="height:170px">
                     <div class="card-body">
                         <h5 class="card-title">${mname}</h5>
                         <p class="card-text">${dono}</p>
@@ -287,327 +495,58 @@
     $("#savebtn").click(async function () {
       $('#postingbox').toggle();
     })
+    const modalOpenButton = document.getElementById('modalOpenButton');
+    const modalCloseButton = document.getElementById('modalCloseButton');
+    const modal = document.getElementById('modalContainer');
 
+    modalOpenButton.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+    });
 
-    // 슬라이드 전체 크기(width 구하기)
-    const slide = document.querySelector(".slide");
-    let slideWidth = slide.clientWidth;
+    modalCloseButton.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });</script>
 
-    // 버튼 엘리먼트 선택하기
-    const prevBtn = document.querySelector(".slide_prev_button");
-    const nextBtn = document.querySelector(".slide_next_button");
+  <script>
+    // 전역 변수 선언
+    let currentSlide = 0; // 현재 표시된 슬라이드의 인덱스
+    let slideTimer; // 자동 슬라이드 타이머 변수
 
-    // 슬라이드 전체를 선택해 값을 변경해주기 위해 슬라이드 전체 선택하기
-    let slideItems = document.querySelectorAll(".slide_item");
-    // 현재 슬라이드 위치가 슬라이드 개수를 넘기지 않게 하기 위한 변수
-    const maxSlide = slideItems.length;
+    // 이미지 슬라이드 함수
+    function showSlide(n) {
+      const slides = document.querySelectorAll(".slideshow img");
 
-    // 버튼 클릭할 때 마다 현재 슬라이드가 어디인지 알려주기 위한 변수
-    let currSlide = 1;
+      // 현재 슬라이드를 숨김
+      slides[currentSlide].style.display = "none";
 
-    // 페이지네이션 생성
-    const pagination = document.querySelector(".slide_pagination");
+      // 다음 슬라이드 인덱스 계산
+      currentSlide += n;
 
-    for (let i = 0; i < maxSlide; i++) {
-      if (i === 0) pagination.innerHTML += `<li class="active">•</li>`;
-      else pagination.innerHTML += `<li>•</li>`;
+      // 슬라이드 순환
+      if (currentSlide >= slides.length) {
+        currentSlide = 0;
+      } else if (currentSlide < 0) {
+        currentSlide = slides.length - 1;
+      }
+
+      // 새로운 슬라이드를 표시
+      slides[currentSlide].style.display = "block";
+
+      // 자동 슬라이드 타이머 재설정 (5초 후에 자동으로 다음 슬라이드로 이동)
+      clearInterval(slideTimer);
+      slideTimer = setInterval(function () {
+        plusSlides(1); // 1은 다음 슬라이드로 이동
+      }, 5000); // 5000밀리초(5초) 간격으로 실행
     }
 
-    const paginationItems = document.querySelectorAll(".slide_pagination > li");
-
-    // 무한 슬라이드를 위해 start, end 슬라이드 복사하기
-    const startSlide = slideItems[0];
-    const endSlide = slideItems[slideItems.length - 1];
-    const startElem = document.createElement("div");
-    const endElem = document.createElement("div");
-
-    endSlide.classList.forEach((c) => endElem.classList.add(c));
-    endElem.innerHTML = endSlide.innerHTML;
-
-    startSlide.classList.forEach((c) => startElem.classList.add(c));
-    startElem.innerHTML = startSlide.innerHTML;
-
-    // 각 복제한 엘리먼트 추가하기
-    slideItems[0].before(endElem);
-    slideItems[slideItems.length - 1].after(startElem);
-
-    // 슬라이드 전체를 선택해 값을 변경해주기 위해 슬라이드 전체 선택하기
-    slideItems = document.querySelectorAll(".slide_item");
-    //
-    let offset = slideWidth + currSlide;
-    slideItems.forEach((i) => {
-      i.setAttribute("style", `left: ${-offset}px`);
-    });
-
-    function nextMove() {
-      currSlide++;
-      // 마지막 슬라이드 이상으로 넘어가지 않게 하기 위해서
-      if (currSlide <= maxSlide) {
-        // 슬라이드를 이동시키기 위한 offset 계산
-        const offset = slideWidth * currSlide;
-        // 각 슬라이드 아이템의 left에 offset 적용
-        slideItems.forEach((i) => {
-          i.setAttribute("style", `left: ${-offset}px`);
-        });
-        // 슬라이드 이동 시 현재 활성화된 pagination 변경
-        paginationItems.forEach((i) => i.classList.remove("active"));
-        paginationItems[currSlide - 1].classList.add("active");
-      } else {
-        // 무한 슬라이드 기능 - currSlide 값만 변경해줘도 되지만 시각적으로 자연스럽게 하기 위해 아래 코드 작성
-        currSlide = 0;
-        let offset = slideWidth * currSlide;
-        slideItems.forEach((i) => {
-          i.setAttribute("style", `transition: ${0}s; left: ${-offset}px`);
-        });
-        currSlide++;
-        offset = slideWidth * currSlide;
-        // 각 슬라이드 아이템의 left에 offset 적용
-        setTimeout(() => {
-          // 각 슬라이드 아이템의 left에 offset 적용
-          slideItems.forEach((i) => {
-            // i.setAttribute("style", `transition: ${0}s; left: ${-offset}px`);
-            i.setAttribute("style", `transition: ${0.15}s; left: ${-offset}px`);
-          });
-        }, 0);
-        // // 슬라이드 이동 시 현재 활성화된 pagination 변경
-        paginationItems.forEach((i) => i.classList.remove("active"));
-        paginationItems[currSlide - 1].classList.add("active");
-      }
-    }
-    function prevMove() {
-      currSlide--;
-      // 1번째 슬라이드 이하로 넘어가지 않게 하기 위해서
-      if (currSlide > 0) {
-        // 슬라이드를 이동시키기 위한 offset 계산
-        const offset = slideWidth * currSlide;
-        // 각 슬라이드 아이템의 left에 offset 적용
-        slideItems.forEach((i) => {
-          i.setAttribute("style", `left: ${-offset}px`);
-        });
-        // 슬라이드 이동 시 현재 활성화된 pagination 변경
-        paginationItems.forEach((i) => i.classList.remove("active"));
-        paginationItems[currSlide - 1].classList.add("active");
-      } else {
-        // 무한 슬라이드 기능 - currSlide 값만 변경해줘도 되지만 시각적으로 자연스럽게 하기 위해 아래 코드 작성
-        currSlide = maxSlide + 1;
-        let offset = slideWidth * currSlide;
-        // 각 슬라이드 아이템의 left에 offset 적용
-        slideItems.forEach((i) => {
-          i.setAttribute("style", `transition: ${0}s; left: ${-offset}px`);
-        });
-        currSlide--;
-        offset = slideWidth * currSlide;
-        setTimeout(() => {
-          // 각 슬라이드 아이템의 left에 offset 적용
-          slideItems.forEach((i) => {
-            // i.setAttribute("style", `transition: ${0}s; left: ${-offset}px`);
-            i.setAttribute("style", `transition: ${0.15}s; left: ${-offset}px`);
-          });
-        }, 0);
-        // 슬라이드 이동 시 현재 활성화된 pagination 변경
-        paginationItems.forEach((i) => i.classList.remove("active"));
-        paginationItems[currSlide - 1].classList.add("active");
-      }
+    // 이전 슬라이드 표시
+    function plusSlides(n) {
+      showSlide(n);
     }
 
-    // 버튼 엘리먼트에 클릭 이벤트 추가하기
-    nextBtn.addEventListener("click", () => {
-      // 이후 버튼 누를 경우 현재 슬라이드를 변경
-      nextMove();
-    });
-    // 버튼 엘리먼트에 클릭 이벤트 추가하기
-    prevBtn.addEventListener("click", () => {
-      // 이전 버튼 누를 경우 현재 슬라이드를 변경
-      prevMove();
-    });
-
-    // 브라우저 화면이 조정될 때 마다 slideWidth를 변경하기 위해
-    window.addEventListener("resize", () => {
-      slideWidth = slide.clientWidth;
-    });
-
-    // 각 페이지네이션 클릭 시 해당 슬라이드로 이동하기
-    for (let i = 0; i < maxSlide; i++) {
-      // 각 페이지네이션마다 클릭 이벤트 추가하기
-      paginationItems[i].addEventListener("click", () => {
-        // 클릭한 페이지네이션에 따라 현재 슬라이드 변경해주기(currSlide는 시작 위치가 1이기 때문에 + 1)
-        currSlide = i + 1;
-        // 슬라이드를 이동시키기 위한 offset 계산
-        const offset = slideWidth * currSlide;
-        // 각 슬라이드 아이템의 left에 offset 적용
-        slideItems.forEach((i) => {
-          i.setAttribute("style", `left: ${-offset}px`);
-        });
-        // 슬라이드 이동 시 현재 활성화된 pagination 변경
-        paginationItems.forEach((i) => i.classList.remove("active"));
-        paginationItems[currSlide - 1].classList.add("active");
-      });
-    }
-
-    // 드래그(스와이프) 이벤트를 위한 변수 초기화
-    let startPoint = 0;
-    let endPoint = 0;
-
-    // PC 클릭 이벤트 (드래그)
-    slide.addEventListener("mousedown", (e) => {
-      startPoint = e.pageX; // 마우스 드래그 시작 위치 저장
-    });
-
-    slide.addEventListener("mouseup", (e) => {
-      endPoint = e.pageX; // 마우스 드래그 끝 위치 저장
-      if (startPoint < endPoint) {
-        // 마우스가 오른쪽으로 드래그 된 경우
-        prevMove();
-      } else if (startPoint > endPoint) {
-        // 마우스가 왼쪽으로 드래그 된 경우
-        nextMove();
-      }
-    });
-
-    // 모바일 터치 이벤트 (스와이프)
-    slide.addEventListener("touchstart", (e) => {
-      startPoint = e.touches[0].pageX; // 터치가 시작되는 위치 저장
-    });
-    slide.addEventListener("touchend", (e) => {
-      endPoint = e.changedTouches[0].pageX; // 터치가 끝나는 위치 저장
-      if (startPoint < endPoint) {
-        // 오른쪽으로 스와이프 된 경우
-        prevMove();
-      } else if (startPoint > endPoint) {
-        // 왼쪽으로 스와이프 된 경우
-        nextMove();
-      }
-    });
-
-    // 기본적으로 슬라이드 루프 시작하기
-    let loopInterval = setInterval(() => {
-      nextMove();
-    }, 3000);
-
-    // 슬라이드에 마우스가 올라간 경우 루프 멈추기
-    slide.addEventListener("mouseover", () => {
-      clearInterval(loopInterval);
-    });
-
-    // 슬라이드에서 마우스가 나온 경우 루프 재시작하기
-    slide.addEventListener("mouseout", () => {
-      loopInterval = setInterval(() => {
-        nextMove();
-      }, 3000);
-    });
-
-
+    // 초기 슬라이드 표시
+    showSlide(0);
   </script>
-
-</head>
-
-<body>
-  <header class="p-3 text-bg-dark">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-            <use xlink:href="#bootstrap"></use>
-          </svg>
-        </a>
-        <a href="#" class="nav-link px-2 text-secondary">
-          <img src="https://blog.kakaocdn.net/dn/nPHIX/btswbChyDep/Id9lRpNNLWqQXr9vGiWgR1/img.gif"
-            style="width: 20px; height: 20px" alt="My Image" /></a>
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-white">비익조</a></li>
-        </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-          <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..."
-            aria-label="Search">
-        </form>
-        <div class="text-end">
-          <button type="button" class="btn btn-danger">팀원 등록
-        </div>
-
-      </div>
-    </div>
-  </header>
-
-
-
-  <div class="main">
-    <div class="slide slide_wrap">
-      <div class="slide_item item1"></div>
-      <div class="slide_item item2"></div>
-      <div class="slide_item item3"></div>
-      <div class="slide_item item4"></div>
-      <div class="slide_item item5"></div>
-      <div class="slide_prev_button slide_button">◀</div>
-      <div class="slide_next_button slide_button">▶</div>
-      <ul class="slide_pagination"></ul>
-    </div>
-  </div>
-
-  <div class="mypostingbox" id="postingbox">
-    <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="image" placeholder="캐릭터 이미지 주소">
-      <label for="floatingInput">캐릭터 이미지 주소</label>
-    </div>
-
-    <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="mname" placeholder="이름">
-      <label for="floatingInput">이름</label>
-    </div>
-
-    <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="lv" placeholder="레벨(나이)">
-      <label for="floatingInput">레벨(나이)</label>
-    </div>
-
-    <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="dono" placeholder="도감번호">
-      <label for="floatingInput">도감번호(생년월일)</label>
-    </div>
-
-    <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="skills" placeholder="배운 기술">
-      <label for="floatingInput">배운 기술</label>
-    </div>
-
-    <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="mbti" placeholder="MBTI">
-      <label for="floatingInput">MBTI</label>
-    </div>
-
-    <div class="form-floating mb-3" style="display: inline-block;">
-      <input type="email" class="form-control" id="mbti" placeholder="E 수치"><label for="floatingInput">외향형 E 수치</label>
-    </div>
-    <div class="form-floating mb-3" style="display: inline-block;">
-      <input type="email" class="form-control" id="mbti" placeholder="I 수치"><label for="floatingInput">내향형 I 수치</label>
-    </div>
-    <div class="form-floating mb-3" style="display: inline-block;">
-      <input type="email" class="form-control" id="mbti" placeholder="S 수치"><label for="floatingInput">감각형 S 수치</label>
-    </div>
-    <div class="form-floating mb-3" style="display: inline-block;">
-      <input type="email" class="form-control" id="mbti" placeholder="N 수치"><label for="floatingInput">직관형 N 수치</label>
-    </div>
-
-
-
-
-
-    <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="comment" placeholder="comment">
-      <label for="floatingInput">한마디</label>
-    </div>
-
-    <button type="button" class="btn btn-danger" id="postingbtn">기록하기</button>
-
-  </div>
-  T
-
-  <div class="mycards">
-    <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
-    </div>
-  </div>
-  </div>
-
 </body>
 
 </html>
