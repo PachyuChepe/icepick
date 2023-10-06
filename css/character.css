@@ -1,6 +1,7 @@
 .mycards {
-  width: 600px;
-  margin: 10px auto 10px auto;
+  width: 1200px;
+  margin: 20px auto 20px auto;
+  position: center;
 }
 
 .card-title {
@@ -12,5 +13,12 @@
 }
 
 .card-text {
-  justify-content: center;
+  width: 100px;
+  border-radius: 10px;
+  padding: 3px 5px 5px 10px;
+  margin: auto;
+}
+
+.col {
+  margin: 20px 20px 20px 20px;
 }

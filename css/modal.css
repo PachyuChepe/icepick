@@ -109,22 +109,79 @@
   cursor: pointer;
 }
 
-.modal-dialog {
-  max-width: 800px; /* 모달의 최대 너비 조절 */
+/* 모달 컨테이너 */
+#modalContainer1 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
-.modal-content {
-  background-color: #fff; /* 모달 내용의 배경색 지정 */
-  padding: 20px;
-  border: none;
-  border-radius: 5px;
+/* 모달 컨테이너 숨김 클래스 */
+#modalContainer1.hidden {
+  display: none;
 }
 
-.modal-title {
+/* 모달 내용 */
+#modalContent1 {
+  position: absolute;
+  background-color: #fe7f9c;
+  width: 550px;
+  height: 620px;
+  padding: 15px;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  overflow: auto;
+}
+
+/* 모달 열기 애니메이션 */
+@keyframes animatetop {
+  from {
+    top: -800px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* 모달 헤더 */
+.modal-header1 {
+  padding: 2px 16px;
+  color: white;
+}
+
+/* 모달 내부 요소 스타일링 */
+#modalImage1 {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#modalTitle1 {
   font-size: 24px;
-  font-weight: bold;
+  margin-top: 10px;
 }
 
-.modal-description {
+#modalText1 {
   font-size: 16px;
+  margin-top: 10px;
+}
+
+/* 모달 닫기 버튼 스타일링 */
+#modalCloseButton1 {
+  cursor: pointer;
+  color: white;
+}
+
+#modalCloseButton1:hover,
+#modalCloseButton1:focus {
+  color: #000;
+  text-decoration: none;
 }
