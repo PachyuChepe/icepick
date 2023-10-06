@@ -307,7 +307,35 @@
   <div class="main">
   </div>
 
-  <script>const modalOpenButton = document.getElementById('modalOpenButton');
+  <script type="module">
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyA-rx73_oW_dENaUWuTZXjWmh9uhs1EaAQ",
+      authDomain: "halbebe.firebaseapp.com",
+      projectId: "halbebe",
+      storageBucket: "halbebe.appspot.com",
+      messagingSenderId: "174338580531",
+      appId: "1:174338580531:web:d55a37b52e22de75fa8346",
+      measurementId: "G-GCJ8GECXR3"
+    };
+
+    // Firebase 인스턴스 초기화
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    $("#id").click(async function () {
+      let doc = {};
+      await addDoc(collection(db, "맴버카드"), doc);
+    })
+
+    const modalOpenButton = document.getElementById('modalOpenButton');
     const modalCloseButton = document.getElementById('modalCloseButton');
     const modal = document.getElementById('modalContainer');
 
