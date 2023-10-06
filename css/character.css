@@ -15,10 +15,15 @@
 }
 
 .mycards {
+  padding: 20px;
   width: 600px;
   margin: 20px auto 20px auto;
   text-align: center;
 }
+
+/* .col {
+  margin: 20px 200px 200px 200px;
+} */
 
 .col img {
   width: 100px;
@@ -36,12 +41,12 @@
   margin: auto;
 }
 
-.character11 {
+.character {
   text-align: center;
   margin: 10px;
 }
 
-.character-name11 {
+.character-name {
   color: white;
   /* font-weight: bold; */
   font-size: 1.2rem;
@@ -50,6 +55,6 @@
   padding: 5px 10px 5px 10px;
 }
 
-.character-name-div11 {
+.character-name-div {
   margin: 10px 0px 20px 0px;
 }
