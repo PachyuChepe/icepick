@@ -14,12 +14,34 @@
   overflow: hidden;
 }
 
-.character {
+.mycards {
+  width: 600px;
+  margin: 20px auto 20px auto;
+  text-align: center;
+}
+
+.col img {
+  width: 100px;
+  height: 150px;
+  margin: 0 auto;
+  /* margin: 5px 90px 5px 90px; */
+  overflow: hidden;
+}
+
+.card-title {
+  background-color: #e8344e;
+  width: 100px;
+  border-radius: 10px;
+  padding: 3px 5px 5px 10px;
+  margin: auto;
+}
+
+.character11 {
   text-align: center;
   margin: 10px;
 }
 
-.character-name {
+.character-name11 {
   color: white;
   /* font-weight: bold; */
   font-size: 1.2rem;
@@ -28,6 +50,6 @@
   padding: 5px 10px 5px 10px;
 }
 
-.character-name-div {
+.character-name-div11 {
   margin: 10px 0px 20px 0px;
 }
