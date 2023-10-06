@@ -54,7 +54,6 @@
     #modalOpenButton,
     #modalCloseButton {
       cursor: pointer;
-      background-color: #E8344E;
       color: white;
     }
 
@@ -96,8 +95,20 @@
       position: absolute;
       background-color: #fe7f9c;
       width: 550px;
-      height: 400px;
+      height: 500px;
       padding: 15px;
+    }
+
+    .modal-header {
+      padding: 2px 16px;
+      color: white;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
     }
 
     .showstart {
@@ -234,6 +245,10 @@
 
           <div id="modalContainer" class="hidden">
             <div id="modalContent">
+              <div class="modal-header">
+                <h2><span class="close" id="modalCloseButton">&times;</span></h2>
+                <h3 id="signin">비익조 팀원 등록</h3>
+              </div>
               <div class="mypostingbox">
                 <div class="form-floating mb-3">
                   <input type="email" class="form-control" id="floatingInput" placeholder="캐릭터 사진">
@@ -243,7 +258,7 @@
                   <input type="email" class="form-control" id="floatingInput" placeholder="이름">
                   <label for="floatingInput">이름</label>
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group mb-3"> <!--*모달 mbti 선택창  -->
                   <label class="input-group-text" for="inputGroupSelect01">MBTI</label>
                   <select class="form-select">
                     <option selected>MBTI 선택</option>
@@ -269,7 +284,7 @@
                   <input type="email" class="form-control" id="floatingInput" placeholder="추천 이유">
                   <label for="floatingInput">취미</label>
                 </div>
-                <button type="button" class="btn btn-danger" id="modalCloseButton">가입하기</button>
+                <button type="button" class="btn btn-danger">가입하기</button>
               </div>
             </div>
           </div>
