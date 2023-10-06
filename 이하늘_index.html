@@ -316,19 +316,43 @@
                 </div>
 
                 <div class="form-floating mb-3" style="display: inline-block;">
-                  <input type="email" class="form-control" id="mbti" placeholder="E 수치"><label for="floatingInput">외향형 E
+                  <input type="email" class="form-control" id="mbti_p" placeholder="E 수치"><label for="floatingInput">외향형
+                    E
                     수치</label>
                 </div>
                 <div class="form-floating mb-3" style="display: inline-block;">
-                  <input type="email" class="form-control" id="mbti" placeholder="I 수치"><label for="floatingInput">내향형 I
+                  <input type="email" class="form-control" id="mbti_i" placeholder="I 수치"><label for="floatingInput">내향형
+                    I
                     수치</label>
                 </div>
                 <div class="form-floating mb-3" style="display: inline-block;">
-                  <input type="email" class="form-control" id="mbti" placeholder="S 수치"><label for="floatingInput">감각형 S
+                  <input type="email" class="form-control" id="mbti_s" placeholder="S 수치"><label for="floatingInput">감각형
+                    S
                     수치</label>
                 </div>
                 <div class="form-floating mb-3" style="display: inline-block;">
-                  <input type="email" class="form-control" id="mbti" placeholder="N 수치"><label for="floatingInput">직관형 N
+                  <input type="email" class="form-control" id="mbti_n" placeholder="N 수치"><label for="floatingInput">직관형
+                    N
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_t" placeholder="T 수치"><label for="floatingInput">사고형
+                    T
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_f" placeholder="F 수치"><label for="floatingInput">감정형
+                    F
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_j" placeholder="J 수치"><label for="floatingInput">판단형
+                    J
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_p" placeholder="P 수치"><label for="floatingInput">인식형
+                    P
                     수치</label>
                 </div>
 
@@ -419,7 +443,17 @@
         let dono = $('#dono').val();
         let skills = $('#skills').val();
         let mbti = $('#mbti').val();
+        // 추가
+        let mbti_i = $('#mbti_i').val();
+        let mbti_e = $('#mbti_e').val();
+        let mbti_s = $('#mbti_s').val();
+        let mbti_n = $('#mbti_n').val();
+        let mbti_t = $('#mbti_t').val();
+        let mbti_f = $('#mbti_f').val();
+        let mbti_j = $('#mbti_j').val();
+        let mbti_p = $('#mbti_p').val();
         let comment = $('#comment').val();
+
 
         let doc = {
           'image': image,
@@ -454,7 +488,7 @@
                 <div class="card h-100 bg-transparent border-black text-white text-center">
                     <img src="${image}"
                         class="card-img-top" alt="...">
-                    <div class="card-body">
+                    <div class="mycards">
                         <h5 class="card-title">${mname}</h5>
                         <p class="card-text">${dono}</p>
                     </div>
