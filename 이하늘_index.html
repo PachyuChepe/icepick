@@ -324,7 +324,7 @@
                 </div>
 
                 <div class="form-floating mb-3" style="display: inline-block;">
-                  <input type="email" class="form-control" id="mbti_p" placeholder="E 수치"><label for="floatingInput">외향형
+                  <input type="email" class="form-control" id="mbti_e" placeholder="E 수치"><label for="floatingInput">외향형
                     E
                     수치</label>
                 </div>
@@ -470,6 +470,13 @@
           'dono': dono,
           'skills': skills,
           'mbti': mbti,
+          'mbti_i': mbti_i,
+          'mbti_e': mbti_e,
+          'mbti_s': mbti_s,
+          'mbti_n': mbti_n,
+          'mbti_t': mbti_t,
+          'mbti_j': mbti_j,
+          'mbti_p': mbti_p,
           'comment': comment
 
         };
@@ -490,6 +497,14 @@
       let skills = row['skills'];
       let mbti = row['mbti'];
       let comment = row['comment'];
+      let mbti_i = row['mbti_i'];
+      let mbti_e = row['mbti_e'];
+      let mbti_s = row['mbti_s'];
+      let mbti_n = row['mbti_n'];
+      let mbti_t = row['mbti_t'];
+      let mbti_f = row['mbti_f'];
+      let mbti_j = row['mbti_j'];
+      let mbti_p = row['mbti_p'];
 
       let temp_html = `            
             <div class="col">
