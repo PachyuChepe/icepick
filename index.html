@@ -10,9 +10,8 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/slide.css" />
-    <link rel="stylesheet" href="css/modal.css" />
     <link rel="stylesheet" href="css/character.css" />
-    <script type="module" defer  src="script/character.js"></script>
+    <link rel="stylesheet" href="css/modal.css" />
 </head>
 
 <body>
@@ -195,7 +194,7 @@
     // Firebase 인스턴스 초기화
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    $("#postingbtn").click(async function () {
+    // $("#postingbtn").click(async function () {
 
       $("#postingbtn").click(async function () {
         let image = $('#image').val();
@@ -228,6 +227,7 @@
           'mbti_s': mbti_s,
           'mbti_n': mbti_n,
           'mbti_t': mbti_t,
+          'mbti_f': mbti_f,
           'mbti_j': mbti_j,
           'mbti_p': mbti_p,
           'comment': comment
@@ -237,7 +237,7 @@
         alert('저장 완료!');
         window.location.reload();
       })
-    })
+    // })
 
     let docs = await getDocs(collection(db, "mambers"));
     docs.forEach((doc) => {
@@ -249,6 +249,7 @@
       let dono = row['dono'];
       let skills = row['skills'];
       let mbti = row['mbti'];
+      let comment = row['comment'];
       let mbti_i = row['mbti_i'];
       let mbti_e = row['mbti_e'];
       let mbti_s = row['mbti_s'];
@@ -257,7 +258,6 @@
       let mbti_f = row['mbti_f'];
       let mbti_j = row['mbti_j'];
       let mbti_p = row['mbti_p'];
-      let comment = row['comment'];
 
       let temp_html = `
             <div class="col">
@@ -270,26 +270,42 @@
       $('#card').append(temp_html);
     });
 
+        // 이벤트 핸들러 등록
+        $(document).ready(async function () {
+      // 이미지 클릭 이벤트 핸들러
+      $('.card-img-top').click(function () {
+        // 해당 이미지와 관련된 데이터 가져오기
+        const imageSrc = $(this).attr('src');
+        const title = $(this).siblings('.card-title').text();
+        const description = $(this).siblings('.card-text').text();
 
-    $("#savebtn").click(async function () {
-      $('#postingbox').toggle();
-    })
-    // const modalOpenButton = document.getElementById('modalOpenButton');
-    // const modalCloseButton = document.getElementById('modalCloseButton');
-    // const modal = document.getElementById('modalContainer');
+        // 모달 창 내용 업데이트
+        $('#imageModal .modal-title').text(title);
+        $('#imageModal img').attr('src', imageSrc);
+        $('#imageModal .modal-description').text(description);
 
-    // modalOpenButton.addEventListener('click', () => {
-    //   modal.classList.remove('hidden');
-    // });
-
-    // modalCloseButton.addEventListener('click', () => {
-    //   modal.classList.add('hidden');
-    // });
-    </script>
-
+        // 모달 창 열기
+        $('#imageModal').modal('show');
+      });
+    });
+</script>
 <script src="script/slides.js"></script>
-<script src="script/character.js"></script>
 <script src="script/modal.js"></script>
+
+<div class="modal" id="imageModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img src="" class="img-fluid" alt="이미지">
+        <p class="modal-description"></p>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 
 </html>
