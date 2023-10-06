@@ -447,6 +447,16 @@
         let dono = $('#dono').val();
         let skills = $('#skills').val();
         let mbti = $('#mbti').val();
+        // 추가
+        let mbti_i = $('#mbti_i').val();
+        let mbti_e = $('#mbti_e').val();
+        let mbti_s = $('#mbti_s').val();
+        let mbti_n = $('#mbti_n').val();
+        let mbti_t = $('#mbti_t').val();
+        let mbti_f = $('#mbti_f').val();
+        let mbti_j = $('#mbti_j').val();
+        let mbti_p = $('#mbti_p').val();
+        // 추가끝
         let comment = $('#comment').val();
 
         let doc = {
@@ -456,6 +466,15 @@
           'dono': dono,
           'skills': skills,
           'mbti': mbti,
+          // 추가
+          'mbti_i': mbti_i,
+          'mbti_e': mbti_e,
+          'mbti_s': mbti_s,
+          'mbti_n': mbti_n,
+          'mbti_t': mbti_t,
+          'mbti_j': mbti_j,
+          'mbti_p': mbti_p,
+          // 추가끝
           'comment': comment
 
         };
@@ -475,6 +494,16 @@
       let dono = row['dono'];
       let skills = row['skills'];
       let mbti = row['mbti'];
+      // 추가 
+      let mbti_i = row['mbti_i'];
+      let mbti_e = row['mbti_e'];
+      let mbti_s = row['mbti_s'];
+      let mbti_n = row['mbti_n'];
+      let mbti_t = row['mbti_t'];
+      let mbti_f = row['mbti_f'];
+      let mbti_j = row['mbti_j'];
+      let mbti_p = row['mbti_p'];
+      // 추가끝
       let comment = row['comment'];
 
       let temp_html = `            
