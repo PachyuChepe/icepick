@@ -51,6 +51,13 @@
       margin: 20px auto 20px auto;
     }
 
+    .mycards img {
+      width: 100px;
+      height: 150px;
+      margin: 5px 9px 5px 9px;
+      overflow: hidden;
+    }
+
     #modalOpenButton,
     #modalCloseButton {
       cursor: pointer;
@@ -95,10 +102,11 @@
       position: absolute;
       background-color: #fe7f9c;
       width: 550px;
-      height: 850px;
+      height: 500px;
       padding: 15px;
       animation-name: animatetop;
-      animation-duration: 0.4s
+      animation-duration: 0.4s;
+      overflow: auto;
     }
 
     @-webkit-keyframes animatetop {
@@ -227,25 +235,9 @@
       right: 0;
     }
 
-    .image-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .image-container img {
-      width: 100px;
-      height: 150px;
-      margin: 5px 90px 5px 90px;
-      overflow: hidden;
-    }
-
     .mycards {
       width: 600px;
-      margin: 20px auto 20px auto;
+      margin: 10px auto 10px auto;
     }
 
     .card-title {
@@ -254,6 +246,10 @@
       border-radius: 10px;
       padding: 3px 5px 5px 10px;
       margin: auto;
+    }
+
+    .card-text {
+      justify-content: center;
     }
   </style>
 </head>
@@ -383,7 +379,7 @@
   </div>
 
   <div class="mycards">
-    <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
+    <div id="card" class="row row-cols-1 row-cols-md-6 g-6">
     </div>
   </div>
 
