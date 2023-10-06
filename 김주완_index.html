@@ -72,7 +72,17 @@
       animation-duration: 0.4s
     }
 
-    /* Add Animation */
+
+    /*  나가기 버튼 */
+    .close {
+      color: white;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    /* 등록창 애니메이션 추가 */
+    /* 구글, 사파리 브라우저에 적용되는 애니메이션 */
     @-webkit-keyframes animatetop {
       from {
         top: -300px;
@@ -85,6 +95,7 @@
       }
     }
 
+    /* 표준 적용 */
     @keyframes animatetop {
       from {
         top: -300px;
@@ -95,14 +106,6 @@
         top: 0;
         opacity: 1
       }
-    }
-
-    /* The Close Button */
-    .close {
-      color: white;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
     }
 
     .close:hover,
@@ -365,21 +368,21 @@
   </div>
 
   <script>
-    // Get the modal
+    // 모달창 지정
     var modal = document.getElementById("myModal");
 
-    // Get the button that opens the modal
+    // 모달창 여는 버튼 지정
     var btn = document.getElementById("mybtn");
 
-    // Get the <span> element that closes the modal
+    // 모달창 닫는 버튼 지정
     var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks the button, open the modal 
+    // 모달창 여는 버튼 기능 
     btn.onclick = function () {
       modal.style.display = "block";
     }
 
-    // When the user clicks on <span> (x), close the modal
+    // 모달창 닫는 버튼 기능
     span.onclick = function () {
       modal.style.display = "none";
     }
