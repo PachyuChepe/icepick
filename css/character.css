@@ -25,14 +25,6 @@
   margin: 20px 200px 200px 200px;
 } */
 
-.col img {
-  width: 100px;
-  height: 150px;
-  margin: 0 auto;
-  /* margin: 5px 90px 5px 90px; */
-  overflow: hidden;
-}
-
 .card-title {
   background-color: #e8344e;
   width: 100px;
