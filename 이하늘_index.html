@@ -517,12 +517,12 @@
       $('#card').append(temp_html);
     });
 
-    // $(document).on("click", ".card-img-top", (element) => {
-    //   console.log(element.currentTarget.nextElementSibling.innerHTML)
-    //   let popo = element.currentTarget.nextElementSibling.innerHTML
-    //   window.location.href = `${popo}_index.html`
+    $(document).on("click", ".card-img-top", (element) => {
+      console.log(element.currentTarget.nextElementSibling.innerHTML)
+      let popo = element.currentTarget.nextElementSibling.innerHTML
+      window.location.href = `${popo}_index.html`
 
-    // })미래시대 유물 ->정윤서 센세작
+    })
 
     $("#savebtn").click(async function () {
       $('#postingbox').toggle();
