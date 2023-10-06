@@ -10,8 +10,9 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/slide.css" />
-    <link rel="stylesheet" href="css/character.css" />
     <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/character.css" />
+    <script type="module" defer  src="script/character.js"></script>
 </head>
 
 <body>
@@ -76,19 +77,43 @@
                 </div>
 
                 <div class="form-floating mb-3" style="display: inline-block;">
-                  <input type="email" class="form-control" id="mbti" placeholder="E 수치"><label for="floatingInput">외향형 E
+                  <input type="email" class="form-control" id="mbti_e" placeholder="E 수치"><label for="floatingInput">외향형
+                    E
                     수치</label>
                 </div>
                 <div class="form-floating mb-3" style="display: inline-block;">
-                  <input type="email" class="form-control" id="mbti" placeholder="I 수치"><label for="floatingInput">내향형 I
+                  <input type="email" class="form-control" id="mbti_i" placeholder="I 수치"><label for="floatingInput">내향형
+                    I
                     수치</label>
                 </div>
                 <div class="form-floating mb-3" style="display: inline-block;">
-                  <input type="email" class="form-control" id="mbti" placeholder="S 수치"><label for="floatingInput">감각형 S
+                  <input type="email" class="form-control" id="mbti_s" placeholder="S 수치"><label for="floatingInput">감각형
+                    S
                     수치</label>
                 </div>
                 <div class="form-floating mb-3" style="display: inline-block;">
-                  <input type="email" class="form-control" id="mbti" placeholder="N 수치"><label for="floatingInput">직관형 N
+                  <input type="email" class="form-control" id="mbti_n" placeholder="N 수치"><label for="floatingInput">직관형
+                    N
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_t" placeholder="T 수치"><label for="floatingInput">사고형
+                    T
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_f" placeholder="F 수치"><label for="floatingInput">감정형
+                    F
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_j" placeholder="J 수치"><label for="floatingInput">판단형
+                    J
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_p" placeholder="P 수치"><label for="floatingInput">인식형
+                    P
                     수치</label>
                 </div>
 
@@ -179,7 +204,17 @@
         let dono = $('#dono').val();
         let skills = $('#skills').val();
         let mbti = $('#mbti').val();
+        // 추가
+        let mbti_i = $('#mbti_i').val();
+        let mbti_e = $('#mbti_e').val();
+        let mbti_s = $('#mbti_s').val();
+        let mbti_n = $('#mbti_n').val();
+        let mbti_t = $('#mbti_t').val();
+        let mbti_f = $('#mbti_f').val();
+        let mbti_j = $('#mbti_j').val();
+        let mbti_p = $('#mbti_p').val();
         let comment = $('#comment').val();
+
 
         let doc = {
           'image': image,
@@ -188,6 +223,13 @@
           'dono': dono,
           'skills': skills,
           'mbti': mbti,
+          'mbti_i': mbti_i,
+          'mbti_e': mbti_e,
+          'mbti_s': mbti_s,
+          'mbti_n': mbti_n,
+          'mbti_t': mbti_t,
+          'mbti_j': mbti_j,
+          'mbti_p': mbti_p,
           'comment': comment
 
         };
@@ -207,17 +249,22 @@
       let dono = row['dono'];
       let skills = row['skills'];
       let mbti = row['mbti'];
+      let mbti_i = row['mbti_i'];
+      let mbti_e = row['mbti_e'];
+      let mbti_s = row['mbti_s'];
+      let mbti_n = row['mbti_n'];
+      let mbti_t = row['mbti_t'];
+      let mbti_f = row['mbti_f'];
+      let mbti_j = row['mbti_j'];
+      let mbti_p = row['mbti_p'];
       let comment = row['comment'];
 
-      let temp_html = `            
+      let temp_html = `
             <div class="col">
-                <div class=" card h-100 bg-transparent border-black text-white text-center">
-                    <img src="${image}"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
+                <div class="card h-100 bg-transparent border-black text-white text-center">
+                    <img src="${image}" class="card-img-top" alt="...">
                         <h5 class="card-title">${mname}</h5>
                         <p class="card-text">${dono}</p>
-                    </div>
                 </div>
             </div>`;
       $('#card').append(temp_html);
@@ -227,19 +274,22 @@
     $("#savebtn").click(async function () {
       $('#postingbox').toggle();
     })
-    const modalOpenButton = document.getElementById('modalOpenButton');
-    const modalCloseButton = document.getElementById('modalCloseButton');
-    const modal = document.getElementById('modalContainer');
+    // const modalOpenButton = document.getElementById('modalOpenButton');
+    // const modalCloseButton = document.getElementById('modalCloseButton');
+    // const modal = document.getElementById('modalContainer');
 
-    modalOpenButton.addEventListener('click', () => {
-      modal.classList.remove('hidden');
-    });
+    // modalOpenButton.addEventListener('click', () => {
+    //   modal.classList.remove('hidden');
+    // });
 
-    modalCloseButton.addEventListener('click', () => {
-      modal.classList.add('hidden');
-    });</script>
+    // modalCloseButton.addEventListener('click', () => {
+    //   modal.classList.add('hidden');
+    // });
+    </script>
 
-    <script src="script/slides.js"></script>
+<script src="script/slides.js"></script>
+<script src="script/character.js"></script>
+<script src="script/modal.js"></script>
 </body>
 
 </html>

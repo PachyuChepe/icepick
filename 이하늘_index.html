@@ -54,7 +54,7 @@
     .mycards img {
       width: 100px;
       height: 150px;
-      margin: 10px auto 10px auto;
+      margin: 5px 9px 5px 9px;
       overflow: hidden;
     }
 
@@ -236,9 +236,8 @@
     }
 
     .mycards {
-      width: 1200px;
-      margin: 20px auto 20px auto;
-      position: center;
+      width: 600px;
+      margin: 10px auto 10px auto;
     }
 
     .card-title {
@@ -250,14 +249,7 @@
     }
 
     .card-text {
-      width: 100px;
-      border-radius: 10px;
-      padding: 3px 5px 5px 10px;
-      margin: auto;
-    }
-
-    .col {
-      margin: 20px 20px 20px 20px;
+      justify-content: center;
     }
   </style>
 </head>
@@ -494,9 +486,12 @@
       let temp_html = `            
             <div class="col">
                 <div class="card h-100 bg-transparent border-black text-white text-center">
-                    <img src="${image}" class="card-img-top" alt="...">
+                    <img src="${image}"
+                        class="card-img-top" alt="...">
+                    <div class="mycards">
                         <h5 class="card-title">${mname}</h5>
                         <p class="card-text">${dono}</p>
+                    </div>
                 </div>
             </div>`;
       $('#card').append(temp_html);
