@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Octagon Radar Chart Example</title>
+    <!-- Chart.js 및 jQuery 라이브러리 포함 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <!-- 팔각형 레이더 차트를 그릴 캔버스 요소 생성 -->
+    <canvas id="octagonRadarChart" width="400" height="400"></canvas>
+
+    <script>
+      // 데이터 및 옵션 설정
+      var data = {
+        labels: ["항목1", "항목2", "항목3", "항목4", "항목5", "항목6", "항목7", "항목8"],
+        datasets: [
+          {
+            label: "데이터셋",
+            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            borderColor: "rgba(75, 192, 192, 1)",
+            data: [10, 10, 10, 10, 10, 10, 10, 10],
+          },
+        ],
+      };
+
+      var options = {
+        scale: {
+          type: "polygon", // polygon 스케일 사용
+          angleLines: {
+            display: true,
+          },
+          ticks: {
+            suggestedMin: 0,
+            suggestedMax: 10,
+          },
+        },
+        maintainAspectRatio: false, // 이 옵션을 추가하여 캔버스 크기를 수동으로 제어
+      };
+
+      // 팔각형 레이더 차트 생성
+      var ctx = document.getElementById("octagonRadarChart").getContext("2d");
+      var octagonRadarChart = new Chart(ctx, {
+        type: "radar",
+        data: data,
+        options: options,
+      });
+    </script>
+  </body>
+</html>

@@ -51,6 +51,13 @@
       margin: 20px auto 20px auto;
     }
 
+    .mycards img {
+      width: 100px;
+      height: 150px;
+      margin: 5px 9px 5px 9px;
+      overflow: hidden;
+    }
+
     #modalOpenButton,
     #modalCloseButton {
       cursor: pointer;
@@ -95,10 +102,11 @@
       position: absolute;
       background-color: #fe7f9c;
       width: 550px;
-      height: 850px;
+      height: 500px;
       padding: 15px;
       animation-name: animatetop;
-      animation-duration: 0.4s
+      animation-duration: 0.4s;
+      overflow: auto;
     }
 
     @-webkit-keyframes animatetop {
@@ -227,25 +235,9 @@
       right: 0;
     }
 
-    .image-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .image-container img {
-      width: 100px;
-      height: 150px;
-      margin: 5px 90px 5px 90px;
-      overflow: hidden;
-    }
-
     .mycards {
       width: 600px;
-      margin: 20px auto 20px auto;
+      margin: 10px auto 10px auto;
     }
 
     .card-title {
@@ -254,6 +246,10 @@
       border-radius: 10px;
       padding: 3px 5px 5px 10px;
       margin: auto;
+    }
+
+    .card-text {
+      justify-content: center;
     }
   </style>
 </head>
@@ -320,19 +316,43 @@
                 </div>
 
                 <div class="form-floating mb-3" style="display: inline-block;">
-                  <input type="email" class="form-control" id="mbti" placeholder="E 수치"><label for="floatingInput">외향형 E
+                  <input type="email" class="form-control" id="mbti_p" placeholder="E 수치"><label for="floatingInput">외향형
+                    E
                     수치</label>
                 </div>
                 <div class="form-floating mb-3" style="display: inline-block;">
-                  <input type="email" class="form-control" id="mbti" placeholder="I 수치"><label for="floatingInput">내향형 I
+                  <input type="email" class="form-control" id="mbti_i" placeholder="I 수치"><label for="floatingInput">내향형
+                    I
                     수치</label>
                 </div>
                 <div class="form-floating mb-3" style="display: inline-block;">
-                  <input type="email" class="form-control" id="mbti" placeholder="S 수치"><label for="floatingInput">감각형 S
+                  <input type="email" class="form-control" id="mbti_s" placeholder="S 수치"><label for="floatingInput">감각형
+                    S
                     수치</label>
                 </div>
                 <div class="form-floating mb-3" style="display: inline-block;">
-                  <input type="email" class="form-control" id="mbti" placeholder="N 수치"><label for="floatingInput">직관형 N
+                  <input type="email" class="form-control" id="mbti_n" placeholder="N 수치"><label for="floatingInput">직관형
+                    N
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_t" placeholder="T 수치"><label for="floatingInput">사고형
+                    T
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_f" placeholder="F 수치"><label for="floatingInput">감정형
+                    F
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_j" placeholder="J 수치"><label for="floatingInput">판단형
+                    J
+                    수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block;">
+                  <input type="email" class="form-control" id="mbti_p" placeholder="P 수치"><label for="floatingInput">인식형
+                    P
                     수치</label>
                 </div>
 
@@ -383,7 +403,7 @@
   </div>
 
   <div class="mycards">
-    <div id="card" class="row row-cols-1 row-cols-md-4 g-4">
+    <div id="card" class="row row-cols-1 row-cols-md-6 g-6">
     </div>
   </div>
 
@@ -423,7 +443,17 @@
         let dono = $('#dono').val();
         let skills = $('#skills').val();
         let mbti = $('#mbti').val();
+        // 추가
+        let mbti_i = $('#mbti_i').val();
+        let mbti_e = $('#mbti_e').val();
+        let mbti_s = $('#mbti_s').val();
+        let mbti_n = $('#mbti_n').val();
+        let mbti_t = $('#mbti_t').val();
+        let mbti_f = $('#mbti_f').val();
+        let mbti_j = $('#mbti_j').val();
+        let mbti_p = $('#mbti_p').val();
         let comment = $('#comment').val();
+
 
         let doc = {
           'image': image,
@@ -458,7 +488,7 @@
                 <div class="card h-100 bg-transparent border-black text-white text-center">
                     <img src="${image}"
                         class="card-img-top" alt="...">
-                    <div class="card-body">
+                    <div class="mycards">
                         <h5 class="card-title">${mname}</h5>
                         <p class="card-text">${dono}</p>
                     </div>
