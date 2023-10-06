@@ -1,63 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>아이스픽</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <style>
-      @font-face {
-        font-family: "NeoDunggeunmoPro-Regular";
-        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2")
-          format("woff2");
-        font-weight: normal;
-        font-style: normal;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>아이스픽</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <style>
+    @font-face {
+      font-family: "NeoDunggeunmoPro-Regular";
+      src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2") format("woff2");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      font-family: "NeoDunggeunmoPro-Regular";
+    }
+
+    header {
+      margin: 0px 0px 10px 0px;
+    }
+
+    .custom-button {
+      background-color: #e8344e;
+      color: white;
+    }
+
+    body {
+      background-color: black;
+    }
+
+    .mypostingbox {
+      width: 500px;
+      margin: 20px auto 20px auto;
+
+      border: 1px solid white;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .mypostingbox>button {
+      width: 100%;
+    }
+
+    .mycards {
+      width: 1200px;
+      margin: 20px auto 20px auto;
+    }
+
+    #modalOpenButton,
+    #modalCloseButton {
+      cursor: pointer;
+      background-color: #E8344E;
+      color: white;
+    }
+
+    #modalContainer {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+
+    #modalContainer.hidden {
+      display: none;
+    }
+
+    #modalContainer {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    #modalContainer.hidden {
+      display: none;
+    }
+
+    #modalContent {
+      position: absolute;
+      background-color: #fe7f9c;
+      width: 550px;
+      height: 400px;
+      padding: 15px;
+    }
+
+    .showstart {
+      margin: 3% 5% 0.5% 5%;
+      position: relative;
+      /* 부모 요소의 위치를 상대적으로 설정 */
+      /* max-width: 100%; */
+    }
+
+    .slideshow-container {
+      position: relative;
+      /* 슬라이드 쇼 컨테이너의 위치를 상대적으로 설정 */
+      display: inline-block;
+      width: 100%;
+      padding: 0 5% 0 5%;
+    }
+
+    .slideshow {
+      position: relative;
+      /* 슬라이드 쇼의 위치를 상대적으로 설정 */
+      overflow: hidden;
+      /* 슬라이드 쇼 영역을 넘어가는 이미지를 숨김 */
+      max-height: 400px;
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes fade {
+      0% {
+        opacity: 0;
       }
 
-      * {
-        font-family: "NeoDunggeunmoPro-Regular";
+      25% {
+        opacity: 1;
       }
-      header {
-        margin: 0px 0px 50px 0px;
-      }
-      body {
-        background-color: black;
-      }
-    </style>
-  </head>
-  <body>
-    <header class="p-3 text-bg-dark">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-          </a>
 
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li>
-              <a href="#" class="nav-link px-2 text-secondary"
-                ><img
-                  src="https://blog.kakaocdn.net/dn/nPHIX/btswbChyDep/Id9lRpNNLWqQXr9vGiWgR1/img.gif"
-                  style="width: 20px; height: 20px"
-                  alt="My Image"
-              /></a>
-            </li>
-            <li><a href="#" class="nav-link px-2 text-white">비익조</a></li>
-          </ul>
+      75% {
+        opacity: 1;
+      }
 
-          <div class="text-end">
-            <button type="button" class="btn btn-warning">팀 가입</button>
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .slideshow img {
+      display: none;
+      /* 이미지를 숨김 */
+      width: 100%;
+      /* 이미지 폭을 100%로 설정하여 부모 요소에 맞춤 */
+      height: auto;
+      animation: fade 5s linear infinite;
+    }
+
+    /* 화살표 스타일 설정 */
+    .slideshow-arrow {
+      font-size: 36px;
+      cursor: pointer;
+      position: absolute;
+      /* 절대 위치 설정 */
+      top: 50%;
+      /* 상단 여백을 부모 요소의 중앙에 맞춤 */
+      transform: translateY(-50%);
+      /* 수직 가운데 정렬 */
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      /* border-radius: 50%; 원형 모양으로 설정 */
+    }
+
+    /* .slideshow-arrow {
+				font-size: 30px;
+				cursor: pointer;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				background-color: rgba(0, 0, 0, 0.5);
+				color: white;
+				padding: 10px;
+				z-index: 1;
+			} */
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+
+    .image-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .image-container img {
+      width: 100px;
+      height: 150px;
+      margin: 5px 90px 5px 90px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
+
+
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li>
+            <a href="#" class="nav-link px-2 text-secondary"><img
+                src="https://blog.kakaocdn.net/dn/nPHIX/btswbChyDep/Id9lRpNNLWqQXr9vGiWgR1/img.gif"
+                style="width: 20px; height: 20px" alt="My Image" /></a>
+          </li>
+          <li><a href="#" class="nav-link px-2 text-white">비익조</a></li>
+        </ul>
+
+        <div class="text-end">
+          <button type="button" class="btn custom-button" id="modalOpenButton">팀 가입</button>
+
+          <div id="modalContainer" class="hidden">
+            <div id="modalContent">
+              <div class="mypostingbox">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="floatingInput" placeholder="캐릭터 사진">
+                  <label for="floatingInput">캐릭터 사진</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="floatingInput" placeholder="이름">
+                  <label for="floatingInput">이름</label>
+                </div>
+                <div class="input-group mb-3">
+                  <label class="input-group-text" for="inputGroupSelect01">MBTI</label>
+                  <select class="form-select">
+                    <option selected>MBTI 선택</option>
+                    <option value="1">INTP</option>
+                    <option value="2">INTJ</option>
+                    <option value="3">INFP</option>
+                    <option value="4">INFJ</option>
+                    <option value="5">ISTP</option>
+                    <option value="6">ISTJ</option>
+                    <option value="7">ISFP</option>
+                    <option value="8">ISFJ</option>
+                    <option value="9">ENTP</option>
+                    <option value="10">ENTJ</option>
+                    <option value="11">ENFP</option>
+                    <option value="12">ENFJ</option>
+                    <option value="13">ESTP</option>
+                    <option value="14">ESTJ</option>
+                    <option value="15">ESFP</option>
+                    <option value="16">ESFJ</option>
+                  </select>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="floatingInput" placeholder="추천 이유">
+                  <label for="floatingInput">취미</label>
+                </div>
+                <button type="button" class="btn btn-danger" id="modalCloseButton">가입하기</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </header>
-  </body>
+    </div>
+  </header>
+
+  <div class="showstart">
+    <div class="slideshow-container">
+      <div class="slideshow">
+        <!-- 첫 번째 이미지 -->
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhsMI9%2FbtswPVmDhHB%2FvP9B7TR1ewiSSnCRj4S4K0%2Fimg.jpg"
+          alt="Image 1" />
+        <!-- 두 번째 이미지 -->
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbgS8rs%2Fbtsw0iIWDcO%2Fm90kWI4HWk8WoHNLRECaXK%2Fimg.jpg"
+          alt="Image 2" />
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbfon4p%2FbtswJDf4a7a%2Ftb83tAdaKXQ8jXeD3FQW11%2Fimg.jpg"
+          alt="Image 3" />
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnqT97%2Fbtsw0gLf4Tb%2FId80J8BLDB61jCkEtxLd0k%2Fimg.jpg"
+          alt="Image 4" />
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FyGs1I%2Fbtsxd3jz8fQ%2FJSBuuHz6dKFJRZpNkSPjUk%2Fimg.jpg"
+          alt="Image 5" />
+      </div>
+    </div>
+    <span class="slideshow-arrow prev" onclick="plusSlides(-1)">&#10094;</span>
+    <span class="slideshow-arrow next" onclick="plusSlides(1)">&#10095;</span>
+  </div>
+
+  <div class="main">
+  </div>
+
+  <script type="module">
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyA-rx73_oW_dENaUWuTZXjWmh9uhs1EaAQ",
+      authDomain: "halbebe.firebaseapp.com",
+      projectId: "halbebe",
+      storageBucket: "halbebe.appspot.com",
+      messagingSenderId: "174338580531",
+      appId: "1:174338580531:web:d55a37b52e22de75fa8346",
+      measurementId: "G-GCJ8GECXR3"
+    };
+
+    // Firebase 인스턴스 초기화
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    $("#id").click(async function () {
+      let doc = {};
+      await addDoc(collection(db, "맴버카드"), doc);
+    })
+
+    const modalOpenButton = document.getElementById('modalOpenButton');
+    const modalCloseButton = document.getElementById('modalCloseButton');
+    const modal = document.getElementById('modalContainer');
+
+    modalOpenButton.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+    });
+
+    modalCloseButton.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });</script>
+
+  <script>
+    // 전역 변수 선언
+    let currentSlide = 0; // 현재 표시된 슬라이드의 인덱스
+    let slideTimer; // 자동 슬라이드 타이머 변수
+
+    // 이미지 슬라이드 함수
+    function showSlide(n) {
+      const slides = document.querySelectorAll(".slideshow img");
+
+      // 현재 슬라이드를 숨김
+      slides[currentSlide].style.display = "none";
+
+      // 다음 슬라이드 인덱스 계산
+      currentSlide += n;
+
+      // 슬라이드 순환
+      if (currentSlide >= slides.length) {
+        currentSlide = 0;
+      } else if (currentSlide < 0) {
+        currentSlide = slides.length - 1;
+      }
+
+      // 새로운 슬라이드를 표시
+      slides[currentSlide].style.display = "block";
+
+      // 자동 슬라이드 타이머 재설정 (5초 후에 자동으로 다음 슬라이드로 이동)
+      clearInterval(slideTimer);
+      slideTimer = setInterval(function () {
+        plusSlides(1); // 1은 다음 슬라이드로 이동
+      }, 5000); // 5000밀리초(5초) 간격으로 실행
+    }
+
+    // 이전 슬라이드 표시
+    function plusSlides(n) {
+      showSlide(n);
+    }
+
+    // 초기 슬라이드 표시
+    showSlide(0);
+  </script>
+</body>
+
 </html>
