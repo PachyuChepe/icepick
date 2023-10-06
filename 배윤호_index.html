@@ -11,160 +11,11 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <style>
-      @font-face {
-        font-family: "NeoDunggeunmoPro-Regular";
-        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2")
-          format("woff2");
-        font-weight: normal;
-        font-style: normal;
-      }
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/slide.css" />
+    <link rel="stylesheet" href="css/character.css" />
 
-      * {
-        font-family: "NeoDunggeunmoPro-Regular";
-      }
-
-      header {
-        margin: 0px 0px 15px 0px;
-        border-bottom: 1px solid #9e9ead;
-      }
-
-      .custom-button {
-        background-color: #e8344e;
-        color: white;
-      }
-      /* .main {
-        color: white;
-        background-image: url("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhsMI9%2FbtswPVmDhHB%2FvP9B7TR1ewiSSnCRj4S4K0%2Fimg.jpg");
-        background-position: center;
-        background-size: cover;
-        height: 400px;
-        margin: 2px 25px 30px 30px;
-      } */
-
-      body {
-        background-color: black;
-      }
-
-      .showstart {
-        margin: 3% 5% 0.5% 5%;
-        position: relative; /* 부모 요소의 위치를 상대적으로 설정 */
-        /* max-width: 100%; */
-      }
-
-      .slideshow-container {
-        position: relative; /* 슬라이드 쇼 컨테이너의 위치를 상대적으로 설정 */
-        display: inline-block;
-        width: 100%;
-        padding: 0 5% 0 5%;
-      }
-
-      .slideshow {
-        position: relative; /* 슬라이드 쇼의 위치를 상대적으로 설정 */
-        overflow: hidden; /* 슬라이드 쇼 영역을 넘어가는 이미지를 숨김 */
-        max-height: 400px;
-        max-width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      @keyframes fade {
-        0% {
-          opacity: 0;
-        }
-        25% {
-          opacity: 1;
-        }
-        75% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0;
-        }
-      }
-
-      .slideshow img {
-        display: none; /* 이미지를 숨김 */
-        width: 100%; /* 이미지 폭을 100%로 설정하여 부모 요소에 맞춤 */
-        height: auto;
-        animation: fade 5s linear infinite;
-      }
-
-      /* 화살표 스타일 설정 */
-      .slideshow-arrow {
-        font-size: 36px;
-        cursor: pointer;
-        position: absolute; /* 절대 위치 설정 */
-        top: 50%; /* 상단 여백을 부모 요소의 중앙에 맞춤 */
-        transform: translateY(-50%); /* 수직 가운데 정렬 */
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        padding: 10px;
-        /* border-radius: 50%; 원형 모양으로 설정 */
-        z-index: 1; /* 다른 내용 위에 표시되도록 설정 */
-      }
-      /* .slideshow-arrow {
-				font-size: 30px;
-				cursor: pointer;
-				position: absolute;
-				top: 50%;
-				transform: translateY(-50%);
-				background-color: rgba(0, 0, 0, 0.5);
-				color: white;
-				padding: 10px;
-				z-index: 1;
-			} */
-
-      .prev {
-        left: 0;
-      }
-
-      .next {
-        right: 0;
-      }
-
-      .image-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        max-width: 100%;
-        margin: 0 auto;
-        padding: 20px;
-      }
-
-      .image-container img {
-        width: 100px;
-        height: 150px;
-        margin: 5px 90px 5px 90px;
-        overflow: hidden;
-      }
-
-      .character {
-        text-align: center;
-        margin: 10px;
-      }
-
-      .character-name {
-        color: white;
-        /* font-weight: bold; */
-        font-size: 1.2rem;
-        background-color: #e8344e;
-        border-radius: 10px;
-        padding: 5px 10px 5px 10px;
-      }
-
-      .character-name-div {
-        margin: 10px 0px 20px 0px;
-      }
-    </style>
-    <script>
-      // X 아이콘 클릭 시 캐릭터 이미지와 이름을 모두 제거하는 함수
-      function deleteCharacter(characterId) {
-        var characterDiv = document.getElementById(characterId); // 전달된 ID를 사용해 캐릭터 요소 가져오기
-        characterDiv.remove(); // 캐릭터 요소 제거
-      }
-    </script>
+    <script></script>
   </head>
   <body>
     <header class="p-3 text-bg-dark">
@@ -232,47 +83,6 @@
       <span class="slideshow-arrow prev" onclick="plusSlides(-1)">&#10094;</span>
       <span class="slideshow-arrow next" onclick="plusSlides(1)">&#10095;</span>
     </div>
-
-    <script>
-      // 전역 변수 선언
-      let currentSlide = 0; // 현재 표시된 슬라이드의 인덱스
-      let slideTimer; // 자동 슬라이드 타이머 변수
-
-      // 이미지 슬라이드 함수
-      function showSlide(n) {
-        const slides = document.querySelectorAll(".slideshow img");
-
-        // 현재 슬라이드를 숨김
-        slides[currentSlide].style.display = "none";
-
-        // 다음 슬라이드 인덱스 계산
-        currentSlide += n;
-
-        // 슬라이드 순환
-        if (currentSlide >= slides.length) {
-          currentSlide = 0;
-        } else if (currentSlide < 0) {
-          currentSlide = slides.length - 1;
-        }
-
-        // 새로운 슬라이드를 표시
-        slides[currentSlide].style.display = "block";
-
-        // 자동 슬라이드 타이머 재설정 (5초 후에 자동으로 다음 슬라이드로 이동)
-        clearInterval(slideTimer);
-        slideTimer = setInterval(function () {
-          plusSlides(1); // 1은 다음 슬라이드로 이동
-        }, 5000); // 5000밀리초(5초) 간격으로 실행
-      }
-
-      // 이전 슬라이드 표시
-      function plusSlides(n) {
-        showSlide(n);
-      }
-
-      // 초기 슬라이드 표시
-      showSlide(0);
-    </script>
     <div class="image-container">
       <div class="character" id="character1">
         <img
@@ -374,5 +184,7 @@
         </div>
       </div>
     </div>
+    <script src="script/slides.js"></script>
+    <script src="script/character.js"></script>
   </body>
 </html>
