@@ -132,8 +132,8 @@
 #modalContent1 {
   position: absolute;
   background-color: #fe7f9c;
-  width: 550px;
-  height: 620px;
+  width: 800px;
+  height: 800px;
   padding: 15px;
   animation-name: animatetop;
   animation-duration: 0.4s;
@@ -184,4 +184,13 @@
 #modalCloseButton1:focus {
   color: #000;
   text-decoration: none;
+}
+
+#octagonRadarChart {
+  max-width: 60%;
+  max-height: 60%;
+}
+
+.burrow {
+  display: none;
 }
