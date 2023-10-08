@@ -1,400 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>아이스픽</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <style>
-      @font-face {
-        font-family: "NeoDunggeunmoPro-Regular";
-        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2")
-          format("woff2");
-        font-weight: normal;
-        font-style: normal;
-      }
 
-      * {
-        font-family: "NeoDunggeunmoPro-Regular";
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>아이스픽</title>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <!-- <script defer src="script/chat.js"></script> -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/slide.css" />
+  <link rel="stylesheet" href="css/character.css" />
+  <link rel="stylesheet" href="css/modal.css" />
+  <style>
+    /* 스타일링을 위한 CSS */
+    #comment-container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
 
-      .main {
-        color: white;
+    .comment {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+    }
 
-        background-image: url("https://usagif.com/wp-content/uploads/2022/4hv9xm/dancing-duck-acegifcom-73.gif");
-        background-position: center;
-        background-size: cover;
-      }
+    .comment p {
+      margin: 0;
+    }
 
-      body {
-        background-color: black;
-      }
+    .comment-actions {
+      text-align: right;
+    }
 
-      /* The Modal (background) */
-      .modal {
-        display: none;
-        /* Hidden by default */
-        position: absolute;
-        /* Stay in place */
-        z-index: 1;
-        /* Sit on top */
-        padding-top: 100px;
-        /* Location of the box */
-        top: 0;
-        left: 0;
-        width: 100%;
-        /* Full width */
-        height: 100%;
-        /* Full height */
+    .delete-button {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
 
-        overflow: auto;
-        /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0);
-        /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4);
-        /* Black w/ opacity */
-      }
+    .delete-button:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+  <script>
+    function commentclose() {
+      $('#comment-container').toggle();
+    };
+  </script>
+</head>
 
-      /* Modal Content */
-      .modal-content {
-        position: relative;
-        background-color: black;
-        margin: auto;
-        padding: 0;
-        border: 1px solid #888;
-        width: 40%;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        -webkit-animation-name: animatetop;
-        -webkit-animation-duration: 0.4s;
-        animation-name: animatetop;
-        animation-duration: 0.4s;
-      }
+<body>
+  <header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
 
-      /*  나가기 버튼 */
-      .close {
-        color: white;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-      }
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li>
+            <a href="#" class="nav-link px-2 text-secondary"><img
+                src="https://blog.kakaocdn.net/dn/nPHIX/btswbChyDep/Id9lRpNNLWqQXr9vGiWgR1/img.gif"
+                style="width: 20px; height: 20px" alt="My Image" /></a>
+          </li>
+          <li><a href="#" class="nav-link px-2 text-white">비익조</a></li>
+        </ul>
 
-      /* 등록창 애니메이션 추가 */
-      /* 구글, 사파리 브라우저에 적용되는 애니메이션 */
-      @-webkit-keyframes animatetop {
-        from {
-          top: -300px;
-          opacity: 0;
-        }
+        <div class="text-end">
+          <button type="button" class="btn custom-button" id="modalOpenButton">팀 가입</button>
 
-        to {
-          top: 0;
-          opacity: 1;
-        }
-      }
-
-      /* 표준 적용 */
-      @keyframes animatetop {
-        from {
-          top: -300px;
-          opacity: 0;
-        }
-
-        to {
-          top: 0;
-          opacity: 1;
-        }
-      }
-
-      .close:hover,
-      .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      .modal-header {
-        padding: 2px 16px;
-        background-color: black;
-        color: white;
-      }
-
-      .modal-body {
-        margin: 10px auto;
-      }
-
-      .form-control {
-        width: 100%;
-        font-size: 25px;
-      }
-
-      label {
-        color: white;
-      }
-
-      .modal-footer {
-        padding: 2px 16px;
-        background-color: black;
-        color: white;
-      }
-
-      .cards {
-        width: 65%;
-        margin: 0 auto;
-      }
-
-      .card {
-        background-color: transparent;
-        width: auto;
-        position: absolute;
-      }
-
-      .card-footer {
-        margin: 0 auto;
-      }
-
-      .card img {
-        width: 100px;
-        height: 150px;
-      }
-    </style>
-
-    <script type="module">
-      // Firebase SDK 라이브러리 가져오기
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-      import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-      import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-      import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-
-      // 10-04 파이어베이스 미정
-      const firebaseConfig = {
-        apiKey: "AIzaSyDdwgoVk492KWWNXqHCNiN-5Ty21xW5Avs",
-        authDomain: "ccxxyy-ec619.firebaseapp.com",
-        projectId: "ccxxyy-ec619",
-        storageBucket: "ccxxyy-ec619.appspot.com",
-        messagingSenderId: "399817412577",
-        appId: "1:399817412577:web:3210e036c4cad3162d4ca0",
-        measurementId: "G-5MF2W7SFPN",
-      };
-
-      // Firebase 인스턴스 초기화
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-
-      $("#postingbtn").click(async function () {
-        let image = $("#image").val();
-        let name = $("#name").val();
-        let hobby = $("#hobby").val();
-        let MBTI = $("#MBTI").val();
-        let speech = $("#speech").val();
-
-        let doc = {
-          image: image,
-          name: name,
-          hobby: hobby,
-          MBTI: MBTI,
-          speech: speech,
-        };
-        await addDoc(collection(db, "teammate"), doc);
-        alert("등록 완료");
-        window.location.reload();
-      });
-
-      let docs = await getDocs(collection(db, "teammate"));
-      docs.forEach((doc) => {
-        let row = doc.data();
-        console.log(row);
-
-        let image = row["image"];
-        let name = row["name"];
-        let hobby = row["hobby"];
-        let MBTI = row["MBTI"];
-        let speech = row["speech"];
-
-        // 10-04 카드 형식 미정
-        let temp_html = `
-      <div class="col">
-          <div class="card h-100">
-              <img src="${image}"
-                  class="card-img-top" alt="...">
-              <div class="card-body">
-                  <h5 class="card-title">${title}</h5>
-                  <p class="card-text">${content}</p>
+          <div id="modalContainer" class="hidden">
+            <div id="modalContent">
+              <div class="modal-header">
+                <h2><span class="close" id="modalCloseButton">&times;</span></h2>
+                <h3 id="signin">비익조 팀원 등록</h3>
               </div>
-              <div class="card-footer">
-                  <small class="text-muted">${date}</small>
+              <div class="mypostingbox" id="postingbox">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="image" placeholder="캐릭터 이미지 주소" />
+                  <label for="floatingInput">캐릭터 이미지 주소</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="mname" placeholder="이름" />
+                  <label for="floatingInput">이름</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="lv" placeholder="레벨(나이)" />
+                  <label for="floatingInput">레벨(나이)</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="dono" placeholder="도감번호" />
+                  <label for="floatingInput">도감번호(생년월일)</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="skills" placeholder="배운 기술" />
+                  <label for="floatingInput">배운 기술</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="mbti" placeholder="MBTI" />
+                  <label for="floatingInput">MBTI</label>
+                </div>
+
+                <div class="form-floating mb-3" style="display: inline-block">
+                  <input type="email" class="form-control" id="mbti_e" placeholder="E 수치" /><label
+                    for="floatingInput">외향형 E 수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block">
+                  <input type="email" class="form-control" id="mbti_i" placeholder="I 수치" /><label
+                    for="floatingInput">내향형 I 수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block">
+                  <input type="email" class="form-control" id="mbti_s" placeholder="S 수치" /><label
+                    for="floatingInput">감각형 S 수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block">
+                  <input type="email" class="form-control" id="mbti_n" placeholder="N 수치" /><label
+                    for="floatingInput">직관형 N 수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block">
+                  <input type="email" class="form-control" id="mbti_t" placeholder="T 수치" /><label
+                    for="floatingInput">사고형 T 수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block">
+                  <input type="email" class="form-control" id="mbti_f" placeholder="F 수치" /><label
+                    for="floatingInput">감정형 F 수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block">
+                  <input type="email" class="form-control" id="mbti_j" placeholder="J 수치" /><label
+                    for="floatingInput">판단형 J 수치</label>
+                </div>
+                <div class="form-floating mb-3" style="display: inline-block">
+                  <input type="email" class="form-control" id="mbti_p" placeholder="P 수치" /><label
+                    for="floatingInput">인식형 P 수치</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="comment" placeholder="comment" />
+                  <label for="floatingInput">한마디</label>
+                </div>
+
+                <button type="button" class="btn btn-danger" id="postingbtn">기록하기</button>
               </div>
-          </div>
-      </div>`;
-        $("#card").append(temp_html);
-      });
-    </script>
-  </head>
-
-  <body>
-    <header class="p-3 text-bg-dark">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-              <use xlink:href="#bootstrap"></use>
-            </svg>
-          </a>
-
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li>
-              <a href="#" class="nav-link px-2 text-secondary"
-                ><img
-                  src="https://blog.kakaocdn.net/dn/nPHIX/btswbChyDep/Id9lRpNNLWqQXr9vGiWgR1/img.gif"
-                  style="width: 20px; height: 20px"
-                  alt="My Image"
-              /></a>
-            </li>
-            <li><a href="#" class="nav-link px-2 text-white">비익조</a></li>
-          </ul>
-
-          <div class="text-end">
-            <!-- Trigger/Open The Modal -->
-            <button id="mybtn" class="btn btn-warning">팀원 등록</button>
-
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-              <!-- Modal content -->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <span class="close">&times;</span>
-                  <h2 id="signin">비익조 팀원 등록</h2>
-                </div>
-                <div class="modal-body">
-                  <div class="mypostingbox" id="postingbox">
-                    <div class="mb-3">
-                      <label for="floatingInput">캐릭터 사진</label>
-                      <input class="form-control" id="image" />
-                    </div>
-                    <div class="mb-3">
-                      <label for="floatingInput">이름</label>
-                      <input class="form-control" id="name" />
-                    </div>
-                    <div class="mb-3">
-                      <label for="floatingInput">취미</label>
-                      <input class="form-control" id="hobby" />
-                    </div>
-                    <div class="mb-3">
-                      <label for="floatingInput">MBTI</label>
-                      <input class="form-control" id="MBTI" />
-                    </div>
-                    <div class="">
-                      <label for="floatingInput">대사</label>
-                      <input class="form-control" id="speech" />
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button id="postingbtn" type="button" class="btn btn-primary">팀원 등록</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <div class="main">
-      <div class="container-fluid py-5">
-        <h1 id="title" class="display-5 fw-bold"></h1>
-        <p class="col-md-8 fs-4"></p>
-      </div>
-    </div>
-
-    <div class="cards">
-      <div id="card" class="row row-cols-1 row-cols-md-5 g-4">
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqoATE%2FbtswbGEiJlK%2FYGbpCkFqBeKyLgdQOSPyfk%2Fimg.png"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-footer">
-              <button id="detail" class="btn btn-warning">이름</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcDUdfu%2FbtswcIaUMpv%2FkWI01UcouLzyNrn8LcsEkK%2Fimg.png"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-footer">
-              <button id="detail" class="btn btn-warning">이름</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbyXvTx%2FbtswPT9UbAu%2FUzfySWeK2QhxeiXEDfmL91%2Fimg.png"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-footer">
-              <button id="detail" class="btn btn-warning">이름</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FCeJQS%2FbtswpU2ZKdY%2FNBp3HIbiVshB3Oh9rR2Gzk%2Fimg.png"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-footer">
-              <button id="detail" class="btn btn-warning">이름</button>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card">
-            <img
-              src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdO55GN%2Fbtsw66mTinb%2FPZ6XeNHKL5JjArkQpTwyb0%2Fimg.png"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-footer">
-              <button id="detail" class="btn btn-warning">이름</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </header>
 
-    <script>
-      // 모달창 지정
-      var modal = document.getElementById("myModal");
+  <div class="showstart">
+    <div class="slideshow-container">
+      <div class="slideshow">
+        <!-- 첫 번째 이미지 -->
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhsMI9%2FbtswPVmDhHB%2FvP9B7TR1ewiSSnCRj4S4K0%2Fimg.jpg"
+          alt="Image 1" />
+        <!-- 두 번째 이미지 -->
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbgS8rs%2Fbtsw0iIWDcO%2Fm90kWI4HWk8WoHNLRECaXK%2Fimg.jpg"
+          alt="Image 2" />
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbfon4p%2FbtswJDf4a7a%2Ftb83tAdaKXQ8jXeD3FQW11%2Fimg.jpg"
+          alt="Image 3" />
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnqT97%2Fbtsw0gLf4Tb%2FId80J8BLDB61jCkEtxLd0k%2Fimg.jpg"
+          alt="Image 4" />
+        <img
+          src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FyGs1I%2Fbtsxd3jz8fQ%2FJSBuuHz6dKFJRZpNkSPjUk%2Fimg.jpg"
+          alt="Image 5" />
+      </div>
+    </div>
+    <span class="slideshow-arrow prev" onclick="plusSlides(-1)">&#10094;</span>
+    <span class="slideshow-arrow next" onclick="plusSlides(1)">&#10095;</span>
+  </div>
 
-      // 모달창 여는 버튼 지정
-      var btn = document.getElementById("mybtn");
+  <div class="mycards">
+    <div id="card" class="row row-cols-1 row-cols-md-6 g-6"></div>
+  </div>
 
-      // 모달창 닫는 버튼 지정
-      var span = document.getElementsByClassName("close")[0];
+  <div class="main"></div>
 
-      // 모달창 여는 버튼 기능
-      btn.onclick = function () {
-        modal.style.display = "block";
+  <script type="module">
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAqgZTkIOU1FDJxLH8CZbBEtt4wA6UK0a0",
+      authDomain: "sparta-Aleejin.firebaseapp.com",
+      projectId: "sparta-leejin",
+      storageBucket: "sparta-leejin.appspot.com",
+      messagingSenderId: "44861350306",
+      appId: "1:44861350306:web:3294770f6384aed70ed2fb",
+      measurementId: "G-EWJVC04VRL",
+    };
+
+    // Firebase 인스턴스 초기화
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    $("#postingbtn").click(async function () {
+      let image = $("#image").val();
+      let mname = $("#mname").val();
+      let lv = $("#lv").val();
+      let dono = $("#dono").val();
+      let skills = $("#skills").val();
+      let mbti = $("#mbti").val();
+      // 추가
+      let mbti_i = $("#mbti_i").val();
+      let mbti_e = $("#mbti_e").val();
+      let mbti_s = $("#mbti_s").val();
+      let mbti_n = $("#mbti_n").val();
+      let mbti_t = $("#mbti_t").val();
+      let mbti_f = $("#mbti_f").val();
+      let mbti_j = $("#mbti_j").val();
+      let mbti_p = $("#mbti_p").val();
+      let comment = $("#comment").val();
+
+      let doc = {
+        image: image,
+        mname: mname,
+        lv: lv,
+        dono: dono,
+        skills: skills,
+        mbti: mbti,
+        mbti_i: mbti_i,
+        mbti_e: mbti_e,
+        mbti_s: mbti_s,
+        mbti_n: mbti_n,
+        mbti_t: mbti_t,
+        mbti_f: mbti_f,
+        mbti_j: mbti_j,
+        mbti_p: mbti_p,
+        comment: comment,
       };
+      await addDoc(collection(db, "mambers"), doc);
+      alert("저장 완료!");
+      window.location.reload();
+    });
 
-      // 모달창 닫는 버튼 기능
-      span.onclick = function () {
-        modal.style.display = "none";
+    let docs = await getDocs(collection(db, "mambers"));
+    docs.forEach((doc) => {
+      let row = doc.data();
+
+      let image = row["image"];
+      let mname = row["mname"];
+      let lv = row["lv"];
+      let dono = row["dono"];
+      let skills = row["skills"];
+      let mbti = row["mbti"];
+      let comment = row["comment"];
+      let mbti_i = row["mbti_i"];
+      let mbti_e = row["mbti_e"];
+      let mbti_s = row["mbti_s"];
+      let mbti_n = row["mbti_n"];
+      let mbti_t = row["mbti_t"];
+      let mbti_f = row["mbti_f"];
+      let mbti_j = row["mbti_j"];
+      let mbti_p = row["mbti_p"];
+
+      let temp_html = `            
+            <div class="col">
+                <div class="card h-100 bg-transparent border-black text-white text-center">
+                    <img src="${image}" class="card-img-top" alt="...">
+                        <h5 class="card-title">${mname}</h5>
+                        <p class="card-text">${dono}</p>
+                        <span class="burrow">
+                        <p class="user-lv">${lv}</p>
+                        <p class="user-skills">${skills}</p>
+                        <p class="user-mbti">${mbti}</p>
+                        <p class="user-comment">${comment}</p>
+                        <p class="user-mbti-i">${mbti_i}</p>
+                        <p class="user-mbti-e">${mbti_e}</p>
+                        <p class="user-mbti-s">${mbti_s}</p>
+                        <p class="user-mbti-n">${mbti_n}</p>
+                        <p class="user-mbti-t">${mbti_t}</p>
+                        <p class="user-mbti-f">${mbti_f}</p>
+                        <p class="user-mbti-j">${mbti_j}</p>
+                        <p class="user-mbti-p">${mbti_p}</p>
+                        </span>
+                        </div>
+                        </div>
+                        `;
+      $("#card").append(temp_html);
+    });
+
+    $(document).on("click", ".card-img-top", function () {
+      // 클릭한 이미지의 데이터 가져오기
+      const imageSrc = $(this).attr("src");
+      const cardTitle = $(this).siblings(".card-title").text(); // 예제로 card-title 클래스를 사용했습니다.
+      const cardText = $(this).siblings(".card-text").text(); // 예제로 card-text 클래스를 사용했습니다.
+      const userLv = $(this).closest(".card").find(".user-lv").text();
+      const userSkills = $(this).closest(".card").find(".user-skills").text();
+      const userMbti = $(this).closest(".card").find(".user-mbti").text();
+      const userComment = $(this).closest(".card").find(".user-comment").text();
+      const mbtiI = parseInt($(this).closest(".card").find(".user-mbti-i").text(), 10);
+      const mbtiE = parseInt($(this).closest(".card").find(".user-mbti-e").text(), 10);
+      const mbtiS = parseInt($(this).closest(".card").find(".user-mbti-s").text(), 10);
+      const mbtiN = parseInt($(this).closest(".card").find(".user-mbti-n").text(), 10);
+      const mbtiT = parseInt($(this).closest(".card").find(".user-mbti-t").text(), 10);
+      const mbtiF = parseInt($(this).closest(".card").find(".user-mbti-f").text(), 10);
+      const mbtiJ = parseInt($(this).closest(".card").find(".user-mbti-j").text(), 10);
+      const mbtiP = parseInt($(this).closest(".card").find(".user-mbti-p").text(), 10);
+      const mbtiData = {
+        mbtiI,
+        mbtiE,
+        mbtiS,
+        mbtiN,
+        mbtiT,
+        mbtiF,
+        mbtiJ,
+        mbtiP,
       };
-    </script>
-  </body>
+      localStorage.setItem("mbtiData", JSON.stringify(mbtiData));
+
+      // 모달 창에 데이터 설정
+      $("#modalImage1").attr("src", imageSrc); // id="modalImage1"
+      $("#modalTitle1").text(cardTitle); // id="modalTitle1"
+      $("#modalText1").text(cardText); // id="modalText1"
+      $("#modalUserLv").text(userLv); // id="modalText1"
+      $("#modalUserSkills").text(userSkills); // id="modalText1"
+      $("#modalUserMbti").text(userMbti); // id="modalText1"
+      $("#modalUserComment").text(userComment); // id="modalText1"
+
+      updateOctagonRadarChart();
+      // 모달 창 열기
+      $("#modalContainer1").removeClass("hidden"); // id="modalContainer1"
+    });
+
+    function updateOctagonRadarChart() {
+      octagonRadarChart.data.datasets[0].pointRadius = 0;
+      octagonRadarChart.update();
+    }
+
+    // 모달 닫기 버튼
+    $("#modalCloseButton1").click(function () {
+      // localStorage.clear();
+      location.reload();
+      $("#modalContainer1").addClass("hidden"); // id="modalContainer1"
+    });
+    // $("#savebtn").click(async function () {
+    //   $('#postingbox').toggle();
+    // })
+  </script>
+
+  <script src="script/slides.js"></script>
+  <script src="script/modal.js"></script>
+
+  <div id="modalContainer1" class="hidden">
+    <!-- id="modalContainer1" 추가 -->
+    <div id="modalContent1">
+      <!-- id="modalContent1" 추가 -->
+      <div class="modal-header">
+        <h2><span class="close" id="modalCloseButton1">&times;</span></h2>
+        <!-- id="modalCloseButton1" 추가 -->
+        <h3 id="signin1">팀원 소개</h3>
+      </div>
+      <div class="mypostingbox" id="postingbox1">
+        <!-- id="postingbox1" 추가 -->
+        <!-- 이미지 표시를 위한 요소 -->
+        <div>
+          <img id="modalImage1" src="" alt="Modal Image" style="max-width: 100%; max-height: 100%" />
+          <!-- id="modalImage1" 추가 -->
+          <canvas id="octagonRadarChart"></canvas>
+        </div>
+        <!-- 데이터를 표시할 요소들 -->
+        <h4 id="modalTitle1"></h4>
+        <!-- id="modalTitle1" 추가 -->
+        <p id="modalText1"></p>
+        <p id="modalUserLv"></p>
+        <p id="modalUserSkills"></p>
+        <p id="modalUserMbti"></p>
+        <p id="modalUserComment"></p>
+
+        <!-- id="modalText1" 추가 -->
+        <!-- 달기 버튼 -->
+        <button onclick="commentclose()" type="button" class="btn btn-danger">댓글 달기</button>
+        <!-- id="modalCloseButton1" 추가 -->
+        <!-- <span> -->
+        <div id="comment-container" style="display:none;">
+          <!-- 댓글 작성 폼 -->
+          <form id="comment-form">
+            <input id="nickname" type="text" placeholder="닉네임을 입력하세요">
+            <textarea id="comment-text" placeholder="댓글을 작성하세요"></textarea>
+            <button type="submit">댓글 작성</button>
+          </form>
+
+          <!-- 댓글 목록 -->
+          <div id="comment-list"></div>
+        </div>
+
+        <!-- </span> -->
+      </div>
+    </div>
+  </div>
+  <script defer src="script/chat.js"></script>
+  <script>
+    // 댓글 삭제 함수
+    function deleteComment(comment) {
+      comment.parentNode.removeChild(comment);
+    }
+
+    // 댓글 작성 폼 제출 시 댓글 추가
+    document.getElementById('comment-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const nickname = document.getElementById('nickname').value;
+      const commentText = document.getElementById('comment-text').value;
+
+      if (nickname.trim() !== '' && commentText.trim() !== '') {
+        const commentList = document.getElementById('comment-list');
+
+        const comment = document.createElement('div');
+        comment.className = 'comment';
+        comment.innerHTML = `
+                    <p><strong>${nickname}:</strong> ${commentText}</p>
+                    <div class="comment-actions">
+                        <button class="delete-button" onclick="deleteComment(this.parentNode.parentNode)">삭제</button>
+                    </div>
+                `;
+
+        commentList.appendChild(comment);
+
+        // 입력 필드 초기화
+        document.getElementById('nickname').value = '';
+        document.getElementById('comment-text').value = '';
+      }
+    });
+  </script>
+</body>
+
 </html>
