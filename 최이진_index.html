@@ -365,17 +365,19 @@
       </div>
       <div class="mypostingbox" id="postingbox1">
         <div class="modalcharacterimg">
-          <img id="modalImage1" src="" alt="Modal Image" style="max-width: 100%; max-height: 100%" />
+          <img id="modalImage1" alt="Modal Image" style="float: left;" />
+          <div style="width: 200px; height: 200px; float: left;"><canvas id="octagonRadarChart"></canvas></div>
           <div id="modalUserMbti"></div>
-          <canvas id="octagonRadarChart"></canvas>
         </div>
         <h4 id="modalTitle1"></h4>
         <p id="modalText1"></p>
         <p id="modalUserLv"></p>
         <p id="modalUserSkills"></p>
         <p id="modalUserComment"></p>
-
-        <button type="button" class="btn btn-danger" id="modalCloseButton1">닫기</button>
+        <div>
+          <button type="button" class="btn btn-black" id="modalCloseButton1" style="width: 150px;">삭제</button>
+          <button type="button" class="btn btn-danger" id="modalCloseButton1" style="width: 150px;">닫기</button>
+        </div>
       </div>
     </div>
   </div>

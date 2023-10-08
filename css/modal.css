@@ -191,13 +191,8 @@
 }
 
 #octagonRadarChart {
-<<<<<<< HEAD
-  max-width: 50%;
-  max-height: 50%;
-=======
   max-width: 200px;
   max-height: 200px;
->>>>>>> 3738e9b3931a637402adae8d0a3e0ba2cf2a693f
 }
 
 .burrow {
