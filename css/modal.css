@@ -7,7 +7,7 @@
   border-radius: 5px;
 }
 
-.mypostingbox > button {
+.mypostingbox>button {
   width: 100%;
 }
 
@@ -133,7 +133,7 @@
   position: absolute;
   background-color: #fe7f9c;
   width: 800px;
-  height: 800px;
+  height: 760px;
   padding: 15px;
   animation-name: animatetop;
   animation-duration: 0.4s;
@@ -146,6 +146,7 @@
     top: -800px;
     opacity: 0;
   }
+
   to {
     top: 0;
     opacity: 1;
@@ -187,8 +188,8 @@
 }
 
 #octagonRadarChart {
-  max-width: 60%;
-  max-height: 60%;
+  max-width: 50%;
+  max-height: 50%;
 }
 
 .burrow {
