@@ -8,258 +8,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-  <style>
-    @font-face {
-      font-family: "NeoDunggeunmoPro-Regular";
-      src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2") format("woff2");
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    * {
-      font-family: "NeoDunggeunmoPro-Regular";
-    }
-
-    header {
-      margin: 0px 0px 10px 0px;
-    }
-
-    .custom-button {
-      background-color: #e8344e;
-      color: white;
-    }
-
-    body {
-      background-color: black;
-    }
-
-    .mypostingbox {
-      width: 500px;
-      margin: 20px auto 20px auto;
-
-      border: 1px solid white;
-      padding: 20px;
-      border-radius: 5px;
-    }
-
-    .mypostingbox>button {
-      width: 100%;
-    }
-
-    .mycards {
-      width: 1200px;
-      margin: 20px auto 20px auto;
-    }
-
-    .mycards img {
-      width: 100px;
-      height: 150px;
-      margin: 10px auto 10px auto;
-      overflow: hidden;
-    }
-
-    #modalOpenButton,
-    #modalCloseButton {
-      cursor: pointer;
-      color: white;
-    }
-
-    #modalContainer {
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
-    }
-
-
-    #modalContainer.hidden {
-      display: none;
-    }
-
-    #modalContainer {
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(0, 0, 0, 0.5);
-    }
-
-    #modalContainer.hidden {
-      display: none;
-    }
-
-    #modalContent {
-      position: absolute;
-      background-color: #fe7f9c;
-      width: 550px;
-      height: 620px;
-      padding: 15px;
-      animation-name: animatetop;
-      animation-duration: 0.4s;
-      overflow: auto;
-    }
-
-    @-webkit-keyframes animatetop {
-      from {
-        top: -800px;
-        opacity: 0
-      }
-
-      to {
-        top: 0;
-        opacity: 1
-      }
-    }
-
-    @keyframes animatetop {
-      from {
-        top: -800px;
-        opacity: 1
-      }
-
-      to {
-        top: 0;
-        opacity: 1
-      }
-    }
-
-    .modal-header {
-      padding: 2px 16px;
-      color: white;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .showstart {
-      margin: 3% 5% 0.5% 5%;
-      position: relative;
-      /* 부모 요소의 위치를 상대적으로 설정 */
-      /* max-width: 100%; */
-    }
-
-    .slideshow-container {
-      position: relative;
-      /* 슬라이드 쇼 컨테이너의 위치를 상대적으로 설정 */
-      display: inline-block;
-      width: 100%;
-      padding: 0 5% 0 5%;
-    }
-
-    .slideshow {
-      position: relative;
-      /* 슬라이드 쇼의 위치를 상대적으로 설정 */
-      overflow: hidden;
-      /* 슬라이드 쇼 영역을 넘어가는 이미지를 숨김 */
-      max-height: 400px;
-      max-width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    @keyframes fade {
-      0% {
-        opacity: 0;
-      }
-
-      25% {
-        opacity: 1;
-      }
-
-      75% {
-        opacity: 1;
-      }
-
-      100% {
-        opacity: 0;
-      }
-    }
-
-    .slideshow img {
-      display: none;
-      /* 이미지를 숨김 */
-      width: 100%;
-      /* 이미지 폭을 100%로 설정하여 부모 요소에 맞춤 */
-      height: auto;
-      animation: fade 5s linear infinite;
-    }
-
-    /* 화살표 스타일 설정 */
-    .slideshow-arrow {
-      font-size: 36px;
-      cursor: pointer;
-      position: absolute;
-      /* 절대 위치 설정 */
-      top: 50%;
-      /* 상단 여백을 부모 요소의 중앙에 맞춤 */
-      transform: translateY(-50%);
-      /* 수직 가운데 정렬 */
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      padding: 10px;
-      /* border-radius: 50%; 원형 모양으로 설정 */
-    }
-
-    /* .slideshow-arrow {
-				font-size: 30px;
-				cursor: pointer;
-				position: absolute;
-				top: 50%;
-				transform: translateY(-50%);
-				background-color: rgba(0, 0, 0, 0.5);
-				color: white;
-				padding: 10px;
-				z-index: 1;
-			} */
-
-    .prev {
-      left: 0;
-    }
-
-    .next {
-      right: 0;
-    }
-
-    .mycards {
-      width: 1200px;
-      margin: 20px auto 20px auto;
-      position: center;
-    }
-
-    .card-title {
-      background-color: #E8344E;
-      width: 100px;
-      border-radius: 10px;
-      padding: 3px 5px 5px 10px;
-      margin: auto;
-    }
-
-    .card-text {
-      width: 100px;
-      border-radius: 10px;
-      padding: 3px 5px 5px 10px;
-      margin: auto;
-    }
-
-    .col {
-      margin: 20px 20px 20px 20px;
-    }
-  </style>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/slide.css" />
+    <link rel="stylesheet" href="css/character.css" />
+    <link rel="stylesheet" href="css/modal.css" />
 </head>
 
 <body>
@@ -475,6 +227,7 @@
           'mbti_s': mbti_s,
           'mbti_n': mbti_n,
           'mbti_t': mbti_t,
+          'mbti_f': mbti_f,
           'mbti_j': mbti_j,
           'mbti_p': mbti_p,
           'comment': comment
@@ -516,68 +269,95 @@
             </div>`;
       $('#card').append(temp_html);
     });
+<<<<<<< HEAD
     $(document).on("click", ".card-img-top", (element) => {
       console.log(element.currentTarget.nextElementSibling.innerHTML)
       let popo = element.currentTarget.nextElementSibling.innerHTML
       window.location.href = `${popo}_index.html`
+=======
 
-    })
+    $(document).on("click", ".card-img-top", function() {
+  // 클릭한 이미지의 데이터 가져오기
+  const imageSrc = $(this).attr('src');
+  const cardTitle = $(this).siblings('.card-title').text(); // 예제로 card-title 클래스를 사용했습니다.
+  const cardText = $(this).siblings('.card-text').text();   // 예제로 card-text 클래스를 사용했습니다.
+  
+  // 모달 창에 데이터 설정
+  $('#modalImage1').attr('src', imageSrc); // id="modalImage1"
+  $('#modalTitle1').text(cardTitle);       // id="modalTitle1"
+  $('#modalText1').text(cardText);         // id="modalText1"
+  
+  // 모달 창 열기
+  $('#modalContainer1').removeClass('hidden'); // id="modalContainer1"
+});
+>>>>>>> 18c23cbf8c0a0bcea6dd2cc051f893ceb75fa262
 
-    $("#savebtn").click(async function () {
-      $('#postingbox').toggle();
-    })
-    const modalOpenButton = document.getElementById('modalOpenButton');
-    const modalCloseButton = document.getElementById('modalCloseButton');
-    const modal = document.getElementById('modalContainer');
+// 모달 닫기 버튼
+$('#modalCloseButton1').click(function() {
+  $('#modalContainer1').addClass('hidden'); // id="modalContainer1"
+});
 
-    modalOpenButton.addEventListener('click', () => {
-      modal.classList.remove('hidden');
-    });
 
-    modalCloseButton.addEventListener('click', () => {
-      modal.classList.add('hidden');
-    });</script>
+    // $("#savebtn").click(async function () {
+    //   $('#postingbox').toggle();
+    // })
+    </script>
 
-  <script>
-    // 전역 변수 선언
-    let currentSlide = 0; // 현재 표시된 슬라이드의 인덱스
-    let slideTimer; // 자동 슬라이드 타이머 변수
+      <script src="script/slides.js"></script>
+      <script src="script/modal.js"></script>
 
-    // 이미지 슬라이드 함수
-    function showSlide(n) {
-      const slides = document.querySelectorAll(".slideshow img");
-
-      // 현재 슬라이드를 숨김
-      slides[currentSlide].style.display = "none";
-
-      // 다음 슬라이드 인덱스 계산
-      currentSlide += n;
-
-      // 슬라이드 순환
-      if (currentSlide >= slides.length) {
-        currentSlide = 0;
-      } else if (currentSlide < 0) {
-        currentSlide = slides.length - 1;
-      }
-
-      // 새로운 슬라이드를 표시
-      slides[currentSlide].style.display = "block";
-
-      // 자동 슬라이드 타이머 재설정 (5초 후에 자동으로 다음 슬라이드로 이동)
-      clearInterval(slideTimer);
-      slideTimer = setInterval(function () {
-        plusSlides(1); // 1은 다음 슬라이드로 이동
-      }, 5000); // 5000밀리초(5초) 간격으로 실행
-    }
-
-    // 이전 슬라이드 표시
-    function plusSlides(n) {
-      showSlide(n);
-    }
-
-    // 초기 슬라이드 표시
-    showSlide(0);
-  </script>
+      <div id="modalContainer1" class="hidden"> <!-- id="modalContainer1" 추가 -->
+        <div id="modalContent1"> <!-- id="modalContent1" 추가 -->
+          <div class="modal-header">
+            <h2><span class="close" id="modalCloseButton1">&times;</span></h2> <!-- id="modalCloseButton1" 추가 -->
+            <h3 id="signin1">이미지 모달</h3>
+          </div>
+          <div class="mypostingbox" id="postingbox1"> <!-- id="postingbox1" 추가 -->
+            <!-- 이미지 표시를 위한 요소 -->
+            <img id="modalImage1" src="" alt="Modal Image" style="max-width: 100%; max-height: 100%;" /> <!-- id="modalImage1" 추가 -->
+      
+            <!-- 데이터를 표시할 요소들 -->
+            <h4 id="modalTitle1"></h4> <!-- id="modalTitle1" 추가 -->
+            <p id="modalText1"></p>   <!-- id="modalText1" 추가 -->
+      
+            <!-- 닫기 버튼 -->
+            <button type="button" class="btn btn-danger" id="modalCloseButton1">닫기</button> <!-- id="modalCloseButton1" 추가 -->
+          </div>
+        </div>
+      </div>
+      
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
