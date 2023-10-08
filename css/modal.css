@@ -7,7 +7,7 @@
   border-radius: 5px;
 }
 
-.mypostingbox > button {
+.mypostingbox>button {
   width: 100%;
 }
 
@@ -71,6 +71,7 @@
   animation-name: animatetop;
   animation-duration: 0.4s;
   overflow: auto;
+  border-radius: 20px;
 }
 
 @-webkit-keyframes animatetop {
@@ -146,6 +147,7 @@
     top: -800px;
     opacity: 0;
   }
+
   to {
     top: 0;
     opacity: 1;
