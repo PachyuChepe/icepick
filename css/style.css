@@ -1,7 +1,6 @@
 @font-face {
   font-family: "NeoDunggeunmoPro-Regular";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2")
-    format("woff2");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
@@ -11,22 +10,13 @@
 }
 
 header {
-  margin: 0px 0px 15px 0px;
-  border-bottom: 1px solid #9e9ead;
+  margin: 0px 0px 10px 0px;
 }
 
 .custom-button {
   background-color: #e8344e;
   color: white;
 }
-/* .main {
-	color: white;
-	background-image: url("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhsMI9%2FbtswPVmDhHB%2FvP9B7TR1ewiSSnCRj4S4K0%2Fimg.jpg");
-	background-position: center;
-	background-size: cover;
-	height: 400px;
-	margin: 2px 25px 30px 30px;
-} */
 
 body {
   background-color: black;

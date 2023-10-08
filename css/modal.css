@@ -1,0 +1,196 @@
+.mypostingbox {
+  width: 500px;
+  margin: 20px auto 20px auto;
+
+  border: 1px solid white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.mypostingbox > button {
+  width: 100%;
+}
+
+.mycards {
+  width: 1200px;
+  margin: 20px auto 20px auto;
+}
+
+.mycards img {
+  width: 100px;
+  height: 150px;
+  margin: 10px auto 10px auto;
+  overflow: hidden;
+}
+
+#modalOpenButton,
+#modalCloseButton {
+  cursor: pointer;
+  color: white;
+}
+
+#modalContainer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+#modalContainer.hidden {
+  display: none;
+}
+
+#modalContainer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#modalContainer.hidden {
+  display: none;
+}
+
+#modalContent {
+  position: absolute;
+  background-color: #fe7f9c;
+  width: 550px;
+  height: 620px;
+  padding: 15px;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  overflow: auto;
+}
+
+@-webkit-keyframes animatetop {
+  from {
+    top: -800px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -800px;
+    opacity: 1;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  padding: 2px 16px;
+  color: white;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 모달 컨테이너 */
+#modalContainer1 {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* 모달 컨테이너 숨김 클래스 */
+#modalContainer1.hidden {
+  display: none;
+}
+
+/* 모달 내용 */
+#modalContent1 {
+  position: absolute;
+  background-color: #fe7f9c;
+  width: 800px;
+  height: 800px;
+  padding: 15px;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  overflow: auto;
+}
+
+/* 모달 열기 애니메이션 */
+@keyframes animatetop {
+  from {
+    top: -800px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* 모달 헤더 */
+.modal-header1 {
+  padding: 2px 16px;
+  color: white;
+}
+
+/* 모달 내부 요소 스타일링 */
+#modalImage1 {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#modalTitle1 {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+#modalText1 {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* 모달 닫기 버튼 스타일링 */
+#modalCloseButton1 {
+  cursor: pointer;
+  color: white;
+}
+
+#modalCloseButton1:hover,
+#modalCloseButton1:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+#octagonRadarChart {
+  max-width: 60%;
+  max-height: 60%;
+}
+
+.burrow {
+  display: none;
+}
