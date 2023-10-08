@@ -269,6 +269,12 @@
             </div>`;
       $('#card').append(temp_html);
     });
+<<<<<<< HEAD
+    $(document).on("click", ".card-img-top", (element) => {
+      console.log(element.currentTarget.nextElementSibling.innerHTML)
+      let popo = element.currentTarget.nextElementSibling.innerHTML
+      window.location.href = `${popo}_index.html`
+=======
 
     $(document).on("click", ".card-img-top", function() {
   // 클릭한 이미지의 데이터 가져오기
@@ -284,6 +290,7 @@
   // 모달 창 열기
   $('#modalContainer1').removeClass('hidden'); // id="modalContainer1"
 });
+>>>>>>> 18c23cbf8c0a0bcea6dd2cc051f893ceb75fa262
 
 // 모달 닫기 버튼
 $('#modalCloseButton1').click(function() {
