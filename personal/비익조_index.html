@@ -8,10 +8,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/slide.css" />
-    <link rel="stylesheet" href="css/character.css" />
-    <link rel="stylesheet" href="css/modal.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/slide.css" />
+  <link rel="stylesheet" href="../css/character.css" />
+  <link rel="stylesheet" href="../css/modal.css" />
 </head>
 
 <body>
@@ -270,87 +270,57 @@
       $('#card').append(temp_html);
     });
 
-    $(document).on("click", ".card-img-top", function() {
-  // 클릭한 이미지의 데이터 가져오기
-  const imageSrc = $(this).attr('src');
-  const cardTitle = $(this).siblings('.card-title').text(); // 예제로 card-title 클래스를 사용했습니다.
-  const cardText = $(this).siblings('.card-text').text();   // 예제로 card-text 클래스를 사용했습니다.
-  
-  // 모달 창에 데이터 설정
-  $('#modalImage1').attr('src', imageSrc); // id="modalImage1"
-  $('#modalTitle1').text(cardTitle);       // id="modalTitle1"
-  $('#modalText1').text(cardText);         // id="modalText1"
-  
-  // 모달 창 열기
-  $('#modalContainer1').removeClass('hidden'); // id="modalContainer1"
-});
+    $(document).on("click", ".card-img-top", function () {
+      // 클릭한 이미지의 데이터 가져오기
+      const imageSrc = $(this).attr('src');
+      const cardTitle = $(this).siblings('.card-title').text(); // 예제로 card-title 클래스를 사용했습니다.
+      const cardText = $(this).siblings('.card-text').text();   // 예제로 card-text 클래스를 사용했습니다.
 
-// 모달 닫기 버튼
-$('#modalCloseButton1').click(function() {
-  $('#modalContainer1').addClass('hidden'); // id="modalContainer1"
-});
+      // 모달 창에 데이터 설정
+      $('#modalImage1').attr('src', imageSrc); // id="modalImage1"
+      $('#modalTitle1').text(cardTitle);       // id="modalTitle1"
+      $('#modalText1').text(cardText);         // id="modalText1"
+
+      // 모달 창 열기
+      $('#modalContainer1').removeClass('hidden'); // id="modalContainer1"
+    });
+
+    // 모달 닫기 버튼
+    $('#modalCloseButton1').click(function () {
+      $('#modalContainer1').addClass('hidden'); // id="modalContainer1"
+    });
 
 
     // $("#savebtn").click(async function () {
     //   $('#postingbox').toggle();
     // })
-    </script>
+  </script>
 
-      <script src="script/slides.js"></script>
-      <script src="script/modal.js"></script>
+  <script src="../script/slides.js"></script>
+  <script src="../script/modal.js"></script>
 
-      <div id="modalContainer1" class="hidden"> <!-- id="modalContainer1" 추가 -->
-        <div id="modalContent1"> <!-- id="modalContent1" 추가 -->
-          <div class="modal-header">
-            <h2><span class="close" id="modalCloseButton1">&times;</span></h2> <!-- id="modalCloseButton1" 추가 -->
-            <h3 id="signin1">이미지 모달</h3>
-          </div>
-          <div class="mypostingbox" id="postingbox1"> <!-- id="postingbox1" 추가 -->
-            <!-- 이미지 표시를 위한 요소 -->
-            <img id="modalImage1" src="" alt="Modal Image" style="max-width: 100%; max-height: 100%;" /> <!-- id="modalImage1" 추가 -->
-      
-            <!-- 데이터를 표시할 요소들 -->
-            <h4 id="modalTitle1"></h4> <!-- id="modalTitle1" 추가 -->
-            <p id="modalText1"></p>   <!-- id="modalText1" 추가 -->
-      
-            <!-- 닫기 버튼 -->
-            <button type="button" class="btn btn-danger" id="modalCloseButton1">닫기</button> <!-- id="modalCloseButton1" 추가 -->
-          </div>
-        </div>
+  <div id="modalContainer1" class="hidden"> <!-- id="modalContainer1" 추가 -->
+    <div id="modalContent1"> <!-- id="modalContent1" 추가 -->
+      <div class="modal-header">
+        <h2><span class="close" id="modalCloseButton1">&times;</span></h2> <!-- id="modalCloseButton1" 추가 -->
+        <h3 id="signin1">이미지 모달</h3>
       </div>
-      
+      <div class="mypostingbox" id="postingbox1"> <!-- id="postingbox1" 추가 -->
+        <!-- 이미지 표시를 위한 요소 -->
+        <img id="modalImage1" src="" alt="Modal Image" style="max-width: 100%; max-height: 100%;" />
+        <!-- id="modalImage1" 추가 -->
+
+        <!-- 데이터를 표시할 요소들 -->
+        <h4 id="modalTitle1"></h4> <!-- id="modalTitle1" 추가 -->
+        <p id="modalText1"></p> <!-- id="modalText1" 추가 -->
+
+        <!-- 닫기 버튼 -->
+        <button type="button" class="btn btn-danger" id="modalCloseButton1">닫기</button>
+        <!-- id="modalCloseButton1" 추가 -->
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

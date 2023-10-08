@@ -71,6 +71,7 @@
   animation-name: animatetop;
   animation-duration: 0.4s;
   overflow: auto;
+  border-radius: 15px;
 }
 
 @-webkit-keyframes animatetop {
@@ -121,6 +122,7 @@
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
   z-index: 1;
+  border-radius: 15px;
 }
 
 /* 모달 컨테이너 숨김 클래스 */
@@ -133,11 +135,12 @@
   position: absolute;
   background-color: #fe7f9c;
   width: 800px;
-  height: 800px;
+  height: 760px;
   padding: 15px;
   animation-name: animatetop;
   animation-duration: 0.4s;
   overflow: auto;
+  border-radius: 15px;
 }
 
 /* 모달 열기 애니메이션 */
@@ -146,6 +149,7 @@
     top: -800px;
     opacity: 0;
   }
+
   to {
     top: 0;
     opacity: 1;
@@ -195,7 +199,19 @@
   display: none;
 }
 
-.test {
-  display: flex;
-  justify-content: center;
+.modalContainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modalContainer::-webkit-scrollbar-thumb {
+  background-color: #2f3542;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+.modalContainer::-webkit-scrollbar-track {
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
 }

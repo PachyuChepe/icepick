@@ -16,11 +16,10 @@
     />
     <!-- 스크립트 및 스타일 시트 파일 링크 -->
     <!-- <script defer src="script/chat.js"></script> -->
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/slide.css" />
-    <link rel="stylesheet" href="css/character.css" />
-    <link rel="stylesheet" href="css/modal.css" />
-    <script type="module" defer src="script/firebase.js"></script>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/slide.css" />
+    <link rel="stylesheet" href="../css/character.css" />
+    <link rel="stylesheet" href="../css/modal.css" />
   </head>
 
   <body>
@@ -191,7 +190,7 @@
     <div class="main"></div>
 
     <!-- Firebase와 관련된 스크립트 모듈 -->
-    <!-- <script type="module">
+    <script type="module">
       // Firebase SDK 라이브러리 가져오기
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
       import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
@@ -289,22 +288,22 @@
                         <h5 class="card-title">${mname}</h5>
                         <p class="card-text">${dono}</p>
                         <span class="burrow">
-                          <p class="user-lv">${lv}</p>
-                          <p class="user-skills">${skills}</p>
-                          <p class="user-mbti">${mbti}</p>
-                          <p class="user-comment">${comment}</p>
-                          <p class="user-mbti-i">${mbti_i}</p>
-                          <p class="user-mbti-e">${mbti_e}</p>
-                          <p class="user-mbti-s">${mbti_s}</p>
-                          <p class="user-mbti-n">${mbti_n}</p>
-                          <p class="user-mbti-t">${mbti_t}</p>
-                          <p class="user-mbti-f">${mbti_f}</p>
-                          <p class="user-mbti-j">${mbti_j}</p>
-                          <p class="user-mbti-p">${mbti_p}</p>
+                        <p class="user-lv">${lv}</p>
+                        <p class="user-skills">${skills}</p>
+                        <p class="user-mbti">${mbti}</p>
+                        <p class="user-comment">${comment}</p>
+                        <p class="user-mbti-i">${mbti_i}</p>
+                        <p class="user-mbti-e">${mbti_e}</p>
+                        <p class="user-mbti-s">${mbti_s}</p>
+                        <p class="user-mbti-n">${mbti_n}</p>
+                        <p class="user-mbti-t">${mbti_t}</p>
+                        <p class="user-mbti-f">${mbti_f}</p>
+                        <p class="user-mbti-j">${mbti_j}</p>
+                        <p class="user-mbti-p">${mbti_p}</p>
                         </span>
-                  </div>
-              </div>
-            `;
+                        </div>
+                        </div>
+                        `;
         // 카드 추가
         $("#card").append(temp_html);
       });
@@ -378,11 +377,11 @@
         // location.reload();
         $("#modalContainer1").addClass("hidden");
       });
-    </script> -->
+    </script>
 
     <!-- 슬라이더 및 모달 관련 스크립트 -->
-    <script src="script/slides.js"></script>
-    <script src="script/modal.js"></script>
+    <script src="../script/slides.js"></script>
+    <script src="../script/modal.js"></script>
 
     <!-- 모달 컨텐츠 -->
     <div id="modalContainer1" class="hidden">
@@ -393,23 +392,22 @@
         </div>
         <div class="mypostingbox" id="postingbox1">
           <div class="modalcharacterimg">
-            <img id="modalImage1" src="" alt="Modal Image" style="max-width: 100%; max-height: 100%" />
+            <img id="modalImage1" alt="Modal Image" style="float: left" />
+            <div style="width: 200px; height: 200px; float: left"><canvas id="octagonRadarChart"></canvas></div>
             <div id="modalUserMbti"></div>
-            <canvas id="octagonRadarChart"></canvas>
           </div>
           <h4 id="modalTitle1"></h4>
           <p id="modalText1"></p>
           <p id="modalUserLv"></p>
           <p id="modalUserSkills"></p>
           <p id="modalUserComment"></p>
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="modal-user-comment-creation" placeholder="댓글 작성" />
-            <label for="floatingInput">댓글 작성</label>
-            <button type="button" class="btn btn-danger" id="modalCloseButton1">등록</button>
+          <div>
+            <button type="button" class="btn btn-black" id="modalCloseButton1" style="width: 150px">삭제</button>
+            <button type="button" class="btn btn-danger" id="modalCloseButton1" style="width: 150px">닫기</button>
           </div>
         </div>
       </div>
     </div>
-    <script defer src="script/chat.js"></script>
+    <script defer src="../script/chat.js"></script>
   </body>
 </html>
