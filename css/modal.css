@@ -71,7 +71,7 @@
   animation-name: animatetop;
   animation-duration: 0.4s;
   overflow: auto;
-  border-radius: 20px;
+  border-radius: 15px;
 }
 
 @-webkit-keyframes animatetop {
@@ -189,15 +189,27 @@
 }
 
 #octagonRadarChart {
-<<<<<<< HEAD
   max-width: 50%;
   max-height: 50%;
-=======
-  max-width: 200px;
-  max-height: 200px;
->>>>>>> 3738e9b3931a637402adae8d0a3e0ba2cf2a693f
 }
 
 .burrow {
   display: none;
+}
+
+.modalContainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modalContainer::-webkit-scrollbar-thumb {
+  background-color: #2f3542;
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+.modalContainer::-webkit-scrollbar-track {
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
 }
