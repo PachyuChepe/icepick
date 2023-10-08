@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../css/character.css" />
     <link rel="stylesheet" href="../css/modal.css" />
     <script type="module" defer src="../script/firebase.js"></script>
+    <script defer src="../script/chat.js"></script>
   </head>
 
   <body>
@@ -397,26 +398,18 @@
             <div id="modalUserMbti"></div>
             <canvas id="octagonRadarChart"></canvas>
           </div>
-          <div class="mypostingbox" id="postingbox1">
-            <div class="modalcharacterimg">
-              <img id="modalImage1" src="" alt="Modal Image" style="max-width: 100%; max-height: 100%" />
-              <div id="modalUserMbti"></div>
-              <canvas id="octagonRadarChart"></canvas>
-            </div>
-            <h4 id="modalTitle1"></h4>
-            <p id="modalText1"></p>
-            <p id="modalUserLv"></p>
-            <p id="modalUserSkills"></p>
-            <p id="modalUserComment"></p>
-            <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="modal-user-comment-creation" placeholder="댓글 작성" />
-              <label for="floatingInput">댓글 작성</label>
-              <button type="button" class="btn btn-danger" id="modalCloseButton1">등록</button>
-            </div>
+          <h4 id="modalTitle1"></h4>
+          <p id="modalText1"></p>
+          <p id="modalUserLv"></p>
+          <p id="modalUserSkills"></p>
+          <p id="modalUserComment"></p>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="modal-user-comment-creation" placeholder="댓글 작성" />
+            <label for="floatingInput">댓글 작성</label>
+            <button type="button" class="btn btn-danger" id="modalCloseButton1">등록</button>
           </div>
         </div>
       </div>
     </div>
-    <script defer src="../script/chat.js"></script>
   </body>
 </html>
