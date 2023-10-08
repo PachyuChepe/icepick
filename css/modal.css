@@ -187,10 +187,15 @@
 }
 
 #octagonRadarChart {
-  max-width: 60%;
-  max-height: 60%;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .burrow {
   display: none;
+}
+
+.test {
+  display: flex;
+  justify-content: center;
 }
