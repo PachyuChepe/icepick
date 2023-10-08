@@ -55,9 +55,9 @@ const options = {
       },
       ticks: {
         display: false,
-        max: 10,
-        stepSize: 5,
-        maxTicksLimit: 0,
+        max: 10, // 차트 최대 값
+        stepSize: 5, //스택사이즈 제한
+        maxTicksLimit: 0, // 맥시멈 최대 값 제한
       },
     },
   },
