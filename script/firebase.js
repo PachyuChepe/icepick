@@ -2,14 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-import {
-  getDocs,
-  doc,
-  deleteDoc,
-  updateDoc,
-  query,
-  orderBy,
-} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 // Firebase 구성 정보
 const firebaseConfig = {
@@ -63,28 +56,7 @@ $("#postingbtn").click(async function () {
     mbti_j: mbti_j,
     mbti_p: mbti_p,
     comment: comment,
-    timestamp: new Date(),
   };
-
-  if (
-    !image ||
-    !mname ||
-    !lv ||
-    !dono ||
-    !skills ||
-    !mbti ||
-    !mbti_i ||
-    !mbti_e ||
-    !mbti_s ||
-    !mbti_n ||
-    !mbti_t ||
-    !mbti_f ||
-    !mbti_j ||
-    !mbti_p ||
-    !comment
-  )
-    return alert("모든 정보를 입력해주세요");
-
   // Firestore에 문서 추가
   await addDoc(collection(db, "mambers"), doc);
 
@@ -94,16 +66,9 @@ $("#postingbtn").click(async function () {
 });
 
 // Firebase에서 데이터 가져오기
-let querySnapshot = await getDocs(query(collection(db, "mambers"), orderBy("timestamp")));
-
-let sortedDocs = querySnapshot.docs.sort((a, b) => {
-  return a.data().timestamp - b.data().timestamp;
-});
-
-console.log("파이어베이스 관음", sortedDocs);
-sortedDocs.forEach((doc) => {
+let docs = await getDocs(collection(db, "mambers"));
+docs.forEach((doc) => {
   let row = doc.data();
-  console.log(doc, "관음");
 
   // 데이터 추출
   let image = row["image"];
@@ -127,10 +92,9 @@ sortedDocs.forEach((doc) => {
       <div class="col">
           <div class="card h-100 bg-transparent border-black text-white text-center">
               <img src="${image}" class="card-img-top" alt="...">
-                  <h5 class="card-title show-button">${mname}</h5>
-                  <p class="delete-button" data-doc-id="${doc.id}">삭제</p>
-                  <span class="burrow">
+                  <h5 class="card-title">${mname}</h5>
                   <p class="card-text">${dono}</p>
+                  <span class="burrow">
                     <p class="user-lv">${lv}</p>
                     <p class="user-skills">${skills}</p>
                     <p class="user-mbti">${mbti}</p>
@@ -219,18 +183,4 @@ $("#modalCloseButton1").click(function () {
   // localStorage.clear();
   // location.reload();
   $("#modalContainer1").addClass("hidden");
-});
-
-// 삭제 버튼 클릭 이벤트 핸들러
-$(document).on("click", ".delete-button", async function (event) {
-  const docId = $(event.target).attr("data-doc-id");
-  console.log("이벤트", docId);
-
-  try {
-    await deleteDoc(doc(db, "mambers", docId));
-    alert("삭제성공");
-    window.location.reload();
-  } catch (error) {
-    alert("삭제실패");
-  }
 });
