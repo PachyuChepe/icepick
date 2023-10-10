@@ -180,7 +180,7 @@ $(document).on("click", ".card-img-top", function () {
   $("#modalTitle1").text(cardTitle);
   const modalText1 = $("#modalText1");
   modalText1.text(""); // 기존 내용 비우기
-  const link = $("<a>").attr("href", cardText).text(cardText);
+  const link = $("<a>").attr("href", cardText).attr("target", "_blank").text(cardText);
   modalText1.append(link); // 하이퍼링크 추가
   $("#modalUserLv").text(userLv);
   $("#modalUserSkills").text(userSkills);
