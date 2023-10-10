@@ -24,8 +24,8 @@ const data = {
   datasets: [
     {
       label: "",
-      backgroundColor: "rgba(75, 192, 192, 0.2)", // 그래프 배경 CSS
-      borderColor: "rgba(75, 192, 192, 1)", // 그래프 선 CSS
+      backgroundColor: "rgba(255, 193, 7, 0.2)", // 그래프 배경 CSS
+      borderColor: "rgba(255, 193, 7, 1)", // 그래프 선 CSS
       data: [],
       pointRadius: 0, // 데이터 포인트 크기 0으로 설정하여 숨김
     },
