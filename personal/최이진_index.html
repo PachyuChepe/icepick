@@ -20,6 +20,32 @@
     <link rel="stylesheet" href="../css/slide.css" />
     <link rel="stylesheet" href="../css/character.css" />
     <link rel="stylesheet" href="../css/modal.css" />
+
+<style>
+  /* 모달창 css실험창 */
+  .modalText01 {
+ background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+ .modalcharacterimgChart {
+  background-color: rgba(255, 255, 255, 0.2);
+  align : center;
+  width: 450px;
+  height: 220px;
+  padding-left: 50px;
+}
+
+.modalbuttons {
+  padding-left: 70px;
+}
+
+.col{
+  cursor: pointer;
+}
+
+</style>
+
   </head>
 
   <body>
@@ -391,23 +417,55 @@
           <h3 id="signin1">이미지 모달</h3>
         </div>
         <div class="mypostingbox" id="postingbox1">
-          <div class="modalcharacterimg">
-            <img id="modalImage1" alt="Modal Image" style="float: left" />
-            <div style="width: 200px; height: 200px; float: left"><canvas id="octagonRadarChart"></canvas></div>
-            <div id="modalUserMbti"></div>
+          <div class="modalcharacterimgChart">
+            <img id="modalImage1" alt="Modal Image" style="width: 150px; float: left;" />
+            <div style="width: 200px; height: 200px; float: left; align-items: right;"><canvas id="octagonRadarChart"></canvas></div>
           </div>
           <h4 id="modalTitle1"></h4>
-          <p id="modalText1"></p>
-          <p id="modalUserLv"></p>
+          <p class="modalText01" id="modalText1"></p>
+          <div id="modalUserMbti"></div>
+          <p class="modalText01" id="modalUserLv"></p>
           <p id="modalUserSkills"></p>
-          <p id="modalUserComment"></p>
-          <div>
-            <button type="button" class="btn btn-black" id="modalCloseButton1" style="width: 150px">삭제</button>
+          <p class="modalText01" id="modalUserComment"></p>
+          <form id="commentFrm">
+          <span>
+            <h4>응원하기</h4>
+              <div class="form-floating">
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="응원의 한마디"  aria-describedby="CheeringBtn">
+                  <button class="btn btn-warning" type="submit" value="등록" id="CheeringBtn">응원하기</button>
+                </form>
+                </div>
+              </div>
+          </span>
+          <div class="modalbuttons">
+            <button type="button" class="btn btn-outline-danger" id="" style="width: 150px;">삭제</button>
             <button type="button" class="btn btn-danger" id="modalCloseButton1" style="width: 150px">닫기</button>
           </div>
         </div>
       </div>
     </div>
-    <script defer src="../script/chat.js"></script>
+    <script defer src="../script/chat.js">
+      
+      // 댓글 쓰기 읽기 
+      const CheeringBtn = document.querySelector("#commentFrm");
+      const list =[];
+
+      function commentBtnHandler(e){
+        e.preventDefault();
+        console.dir(e.target);
+        console.log(e.target[0].value);
+        console.log(e.target.elements[0]);
+        console.log(e.target.elements[0].value);
+        console.log(e.target.elements.content);
+        console.log(e.target.elements.content.value);
+        console.log(e.target.contant);
+        console.log(e.target.contant.value);
+      }
+
+      CheeringBtn.addEventListener("submit",commentBtnHandler);
+      
+
+    </script>
   </body>
 </html>
