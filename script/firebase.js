@@ -109,6 +109,7 @@ sortedDocs.forEach((doc) => {
   let skills = row["skills"];
   let mbti = row["mbti"];
   let comment = row["comment"];
+  console.log("코멘트 추출", comment);
   let mbti_i = row["mbti_i"];
   let mbti_e = row["mbti_e"];
   let mbti_s = row["mbti_s"];
@@ -126,18 +127,18 @@ sortedDocs.forEach((doc) => {
                   <p class="delete-button" data-doc-id="${doc.id}">삭제</p>
                   <span class="burrow">
                   <p class="card-text">${dono}</p>
-                    <p class="user-lv">${lv}</p>
-                    <p class="user-skills">${skills}</p>
-                    <p class="user-mbti">${mbti}</p>
-                    <p class="user-comment">${comment}</p>
-                    <p class="user-mbti-i">${mbti_i}</p>
-                    <p class="user-mbti-e">${mbti_e}</p>
-                    <p class="user-mbti-s">${mbti_s}</p>
-                    <p class="user-mbti-n">${mbti_n}</p>
-                    <p class="user-mbti-t">${mbti_t}</p>
-                    <p class="user-mbti-f">${mbti_f}</p>
-                    <p class="user-mbti-j">${mbti_j}</p>
-                    <p class="user-mbti-p">${mbti_p}</p>
+                  <p class="user-lv">${lv}</p>
+                  <p class="user-skills">${skills}</p>
+                  <p class="user-mbti">${mbti}</p>
+                  <p class="user-comment">${comment}</p>
+                  <p class="user-mbti-i">${mbti_i}</p>
+                  <p class="user-mbti-e">${mbti_e}</p>
+                  <p class="user-mbti-s">${mbti_s}</p>
+                  <p class="user-mbti-n">${mbti_n}</p>
+                  <p class="user-mbti-t">${mbti_t}</p>
+                  <p class="user-mbti-f">${mbti_f}</p>
+                  <p class="user-mbti-j">${mbti_j}</p>
+                  <p class="user-mbti-p">${mbti_p}</p>
                   </span>
             </div>
         </div>
