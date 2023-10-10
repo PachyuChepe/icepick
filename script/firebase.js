@@ -12,13 +12,13 @@ import {
 
 // Firebase 구성 정보
 const firebaseConfig = {
-  apiKey: "AIzaSyAqgZTkIOU1FDJxLH8CZbBEtt4wA6UK0a0",
-  authDomain: "sparta-Aleejin.firebaseapp.com",
-  projectId: "sparta-leejin",
-  storageBucket: "sparta-leejin.appspot.com",
-  messagingSenderId: "44861350306",
-  appId: "1:44861350306:web:3294770f6384aed70ed2fb",
-  measurementId: "G-EWJVC04VRL",
+  apiKey: "AIzaSyDtOvFC9tQwK8U5NvlpE1gfxFQ8zBgpEQM",
+  authDomain: "sparta-cbc39.firebaseapp.com",
+  projectId: "sparta-cbc39",
+  storageBucket: "sparta-cbc39.appspot.com",
+  messagingSenderId: "31781052233",
+  appId: "1:31781052233:web:bf3f7c3fd94939fa160498",
+  measurementId: "G-GMSP950JXK",
 };
 // Firebase 인스턴스 초기화
 export const app = initializeApp(firebaseConfig);
@@ -96,10 +96,9 @@ let sortedDocs = querySnapshot.docs.sort((a, b) => {
   return a.data().timestamp - b.data().timestamp;
 });
 
-console.log("파이어베이스 관음", sortedDocs);
 sortedDocs.forEach((doc) => {
   let row = doc.data();
-  console.log(doc, "관음");
+  // console.log(doc, "관음");
 
   // 데이터 추출
   let image = row["image"];
@@ -109,7 +108,6 @@ sortedDocs.forEach((doc) => {
   let skills = row["skills"];
   let mbti = row["mbti"];
   let comment = row["comment"];
-  console.log("코멘트 추출", comment);
   let mbti_i = row["mbti_i"];
   let mbti_e = row["mbti_e"];
   let mbti_s = row["mbti_s"];
@@ -124,7 +122,7 @@ sortedDocs.forEach((doc) => {
           <div class="card h-100 bg-transparent border-black text-white text-center">
               <img src="${image}" class="card-img-top" alt="...">
                   <h5 class="card-title show-button">${mname}</h5>
-                  <p id="mamber_id" class="delete-button" data-doc-id="${doc.id}">삭제</p>
+                  <p id="member_id" class="delete-button" data-doc-id="${doc.id}">삭제</p>
                   <span class="burrow">
                   <p class="card-text">${dono}</p>
                   <p class="user-lv">${lv}</p>
@@ -226,14 +224,14 @@ $(document).on("click", ".delete-button", async function (event) {
 });
 
 $("#CheeringBtn").on("click", async () => {
-  const mambersId = $("#mamber_id").data("doc-id");
+  const mambersId = $("#member_id").data("doc-id");
 
   let password = prompt("비밀번호를 입력해주세요");
 
-  const data = {
+  let data = {
     memberId: mambersId,
     commentText: $("#commentsUsersInput").val(),
-    date: new Date(),
+    timestamp: new Date(),
     password: password,
   };
 
@@ -241,15 +239,30 @@ $("#CheeringBtn").on("click", async () => {
     return alert("댓글을 작성해주세요");
   }
 
-  if (password > 4) {
+  if (password >= 4) {
     await addDoc(collection(db, "comments"), data);
     try {
     } finally {
       $("#commentsUsersInput").val("");
     }
   } else {
-    alert("비밀번호는 최소 5자리 입니다");
+    alert("비밀번호는 최소 4자리 입니다");
   }
 
-  console.log("아이디?", mambersId);
+  // console.log("아이디?", mambersId);
 });
+
+// const mambersId = $("#member_id").data("doc-id");
+// console.log(mambersId, "계정?");
+// let querySnapshotComment = await getDocs(query(collection(db, "comments"), orderBy("timestamp")));
+
+// let sortedDocsComment = querySnapshotComment.docs.sort((a, b) => {
+//   return a.data().timestamp - b.data().timestamp;
+// });
+
+// sortedDocsComment.forEach((doc) => {
+//   let row = doc.data();
+//   console.log(doc, "코멘트 관음");
+//   console.log(row, "row 관음");
+//   console.log(doc.id, "찍히냐?");
+// });
