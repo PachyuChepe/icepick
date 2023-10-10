@@ -149,7 +149,8 @@ $(document).on("click", ".card-img-top", function () {
   // 클릭한 이미지의 데이터 가져오기
   const imageSrc = $(this).attr("src");
   const cardTitle = $(this).siblings(".card-title").text();
-  const cardText = $(this).siblings(".card-text").text();
+  // const cardText = $(this).siblings(".card-text").text();
+  const cardText = $(this).closest(".card").find(".card-text").text();
   const userLv = $(this).closest(".card").find(".user-lv").text();
   const userSkills = $(this).closest(".card").find(".user-skills").text();
   const userMbti = $(this).closest(".card").find(".user-mbti").text();
