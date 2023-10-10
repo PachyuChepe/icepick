@@ -29,7 +29,6 @@
   </head>
 
   <body>modal
-    <!-- 헤더 섹션 -->
     <header class="p-3 text-bg-dark">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -38,16 +37,17 @@
               <use xlink:href="#bootstrap"></use>
             </svg>
           </a>
+
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li>
               <a href="#" class="nav-link px-2 text-secondary"
                 ><img
                   src="https://blog.kakaocdn.net/dn/nPHIX/btswbChyDep/Id9lRpNNLWqQXr9vGiWgR1/img.gif"
-                  style="width: 20px; height: 20px"
+                  style="width: 30px; height: 30px"
                   alt="My Image"
               /></a>
             </li>
-            <li><a href="#" class="nav-link px-2 text-white">비익조</a></li>
+            <li><a href="#" class="hometitle nav-link px-2 text-white">비익조</a></li>
           </ul>
 
           <div class="text-end">
@@ -78,67 +78,65 @@
                   </div>
 
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control numericInput" id="dono" placeholder="도감번호" />
-                    <label for="floatingInput">도감번호(생년월일)</label>
+                    <input type="text" class="form-control" id="skills" placeholder="협업스타일" />
+                    <label for="floatingInput">협업스타일</label>
                   </div>
 
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="skills" placeholder="배운 기술" />
-                    <label for="floatingInput">배운 기술</label>
+                    <input type="text" class="form-control" id="mbti" placeholder="장점" />
+                    <label for="floatingInput">장점</label>
                   </div>
-
-                  <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="mbti" placeholder="MBTI" />
-                    <label for="floatingInput">MBTI</label>
+                  <div id="mbtiTest">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control numericInput" id="mbti_e" placeholder="E" /><label
+                        for="floatingInput"
+                        >외향형 E</label
+                      >
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control numericInput" id="mbti_i" placeholder="I" /><label
+                        for="floatingInput"
+                        >내향형 I</label
+                      >
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control numericInput" id="mbti_s" placeholder="S" /><label
+                        for="floatingInput"
+                        >감각형 S</label
+                      >
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control numericInput" id="mbti_n" placeholder="N" /><label
+                        for="floatingInput"
+                        >직관형 N</label
+                      >
+                    </div>
                   </div>
-
-                  <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_e" placeholder="E 수치" /><label
-                      for="floatingInput"
-                      >외향형 E 수치</label
-                    >
-                  </div>
-                  <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_i" placeholder="I 수치" /><label
-                      for="floatingInput"
-                      >내향형 I 수치</label
-                    >
-                  </div>
-                  <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_s" placeholder="S 수치" /><label
-                      for="floatingInput"
-                      >감각형 S 수치</label
-                    >
-                  </div>
-                  <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_n" placeholder="N 수치" /><label
-                      for="floatingInput"
-                      >직관형 N 수치</label
-                    >
-                  </div>
-                  <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_t" placeholder="T 수치" /><label
-                      for="floatingInput"
-                      >사고형 T 수치</label
-                    >
-                  </div>
-                  <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_f" placeholder="F 수치" /><label
-                      for="floatingInput"
-                      >감정형 F 수치</label
-                    >
-                  </div>
-                  <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_j" placeholder="J 수치" /><label
-                      for="floatingInput"
-                      >판단형 J 수치</label
-                    >
-                  </div>
-                  <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_p" placeholder="P 수치" /><label
-                      for="floatingInput"
-                      >인식형 P 수치</label
-                    >
+                  <div id="mbtiTest">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control numericInput" id="mbti_t" placeholder="T" /><label
+                        for="floatingInput"
+                        >사고형 T</label
+                      >
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control numericInput" id="mbti_f" placeholder="F" /><label
+                        for="floatingInput"
+                        >감정형 F</label
+                      >
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control numericInput" id="mbti_j" placeholder="J" /><label
+                        for="floatingInput"
+                        >판단형 J</label
+                      >
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control numericInput" id="mbti_p" placeholder="P" /><label
+                        for="floatingInput"
+                        >인식형 P</label
+                      >
+                    </div>
                   </div>
 
                   <div class="form-floating mb-3">
@@ -146,7 +144,12 @@
                     <label for="floatingInput">한마디</label>
                   </div>
 
-                  <button type="button" class="btn btn-danger" id="postingbtn">기록하기</button>
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="dono" placeholder="블로그 주소" />
+                    <label for="floatingInput">블로그 주소</label>
+                  </div>
+
+                  <button type="button" class="btn btn-danger" id="postingbtn">팀원 등록</button>
                 </div>
               </div>
             </div>
@@ -161,23 +164,23 @@
         <div class="slideshow">
           <!-- 이미지 슬라이더 내용 -->
           <img
-            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhsMI9%2FbtswPVmDhHB%2FvP9B7TR1ewiSSnCRj4S4K0%2Fimg.jpg"
+            src="https://github.com/PachyuChepe/icepick/blob/main/image/slide1.png?raw=true"
             alt="Image 1"
           />
           <img
-            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbgS8rs%2Fbtsw0iIWDcO%2Fm90kWI4HWk8WoHNLRECaXK%2Fimg.jpg"
+            src="https://github.com/PachyuChepe/icepick/blob/main/image/slide2.png?raw=true"
             alt="Image 2"
           />
           <img
-            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fbfon4p%2FbtswJDf4a7a%2Ftb83tAdaKXQ8jXeD3FQW11%2Fimg.jpg"
+            src="https://github.com/PachyuChepe/icepick/blob/main/image/slide3.png?raw=true"
             alt="Image 3"
           />
           <img
-            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnqT97%2Fbtsw0gLf4Tb%2FId80J8BLDB61jCkEtxLd0k%2Fimg.jpg"
+            src="https://github.com/PachyuChepe/icepick/blob/main/image/slide4.png?raw=true"
             alt="Image 4"
           />
           <img
-            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FyGs1I%2Fbtsxd3jz8fQ%2FJSBuuHz6dKFJRZpNkSPjUk%2Fimg.jpg"
+            src="https://github.com/PachyuChepe/icepick/blob/main/image/slide5.png?raw=true"
             alt="Image 5"
           />
         </div>
@@ -204,12 +207,12 @@
               <div style="width: 200px; height: 200px; float: left; align-items: right;"><canvas id="octagonRadarChart"></canvas></div>
             </div>
             <h4 id="modalTitle1"></h4>
-            <p class="modalText01" id="modalUserdono"></p>
+            <p class="modalText01" id="modalText1"></p>
             <div id="modalUserMbti"></div>
             <p class="modalText01" id="modalUserLv"></p>
             <p id="modalUserSkills"></p>
             <p class="modalText01" id="modalUserComment"></p>
-            <form id="commentFrm">
+            <p class="burrow" id="modelUserId"></p>
             <span>
               <h4>응원하기</h4>
                 <div class="form-floating">

@@ -134,8 +134,8 @@
 #modalContent1 {
   position: absolute;
   background-color: #fe7f9c;
-  width: 800px;
-  height: 740px;
+  width: 700px;
+  height: 700px;
   padding: 15px;
   animation-name: animatetop;
   animation-duration: 0.4s;
@@ -224,12 +224,14 @@
 .modalcharacterimgChart {
   display: flex;
   justify-content: center;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.3);
   text-align: center;
   width: 450px;
   height: 220px;
   /* padding-left: 50px; */
   margin: 0 auto;
+  padding-left: 50px;
+  border-radius: 20px;
 }
 
 .modalcharacterimgChart img {
@@ -247,4 +249,8 @@
 #mbtiTest {
   display: flex;
   justify-content: center;
+}
+
+.modelUT {
+  color: white;
 }
