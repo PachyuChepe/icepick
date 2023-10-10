@@ -24,8 +24,8 @@ const data = {
   datasets: [
     {
       label: "",
-      backgroundColor: "rgba(255, 193, 7, 0.2)", // 그래프 배경 CSS
-      borderColor: "rgba(255, 193, 7, 1)", // 그래프 선 CSS
+      backgroundColor: "rgba(232, 52, 78, 0.5)", // 그래프 배경 CSS
+      borderColor: "rgba(232, 52, 78, 10)", // 그래프 선 CSS
       data: [],
       pointRadius: 0, // 데이터 포인트 크기 0으로 설정하여 숨김
     },
@@ -44,14 +44,14 @@ const options = {
   scales: {
     r: {
       angleLines: {
-        color: "red", // 각도 라인 색상 변경
+        color: "black", // 각도 라인 색상 변경
       },
       pointLabels: {
-        color: "red", // 라벨 텍스트 색상 변경
+        color: "black", // 라벨 텍스트 색상 변경
         // fontsize: 100,
       },
       grid: {
-        color: "red", // 그리드 색상 변경
+        color: "black", // 그리드 색상 변경
       },
       ticks: {
         display: false,
