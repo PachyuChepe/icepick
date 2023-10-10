@@ -135,7 +135,7 @@
   position: absolute;
   background-color: #fe7f9c;
   width: 800px;
-  height: 760px;
+  height: 740px;
   padding: 15px;
   animation-name: animatetop;
   animation-duration: 0.4s;
@@ -180,8 +180,13 @@
 
 /* 모달 닫기 버튼 스타일링 */
 #modalCloseButton1 {
+<<<<<<< HEAD
   color: #dc3545;
   border-color: #dc3545;
+=======
+    color: white;
+    border-color: #dc3545;
+>>>>>>> 328e65f9819560178c1fba7edd09312bbebe0256
 }
 
 #modalCloseButton1:hover,
