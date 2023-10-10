@@ -124,7 +124,7 @@ sortedDocs.forEach((doc) => {
           <div class="card h-100 bg-transparent border-black text-white text-center">
               <img src="${image}" class="card-img-top" alt="...">
                   <h5 class="card-title show-button">${mname}</h5>
-                  <p class="delete-button" data-doc-id="${doc.id}">삭제</p>
+                  <p id="mamber_id" class="delete-button" data-doc-id="${doc.id}">삭제</p>
                   <span class="burrow">
                   <p class="card-text">${dono}</p>
                   <p class="user-lv">${lv}</p>
@@ -223,4 +223,33 @@ $(document).on("click", ".delete-button", async function (event) {
   } catch (error) {
     alert("삭제 실패");
   }
+});
+
+$("#CheeringBtn").on("click", async () => {
+  const mambersId = $("#mamber_id").data("doc-id");
+
+  let password = prompt("비밀번호를 입력해주세요");
+
+  const data = {
+    memberId: mambersId,
+    commentText: $("#commentsUsersInput").val(),
+    date: new Date(),
+    password: password,
+  };
+
+  if (data.commentText.length <= 0) {
+    return alert("댓글을 작성해주세요");
+  }
+
+  if (password > 4) {
+    await addDoc(collection(db, "comments"), data);
+    try {
+    } finally {
+      $("#commentsUsersInput").val("");
+    }
+  } else {
+    alert("비밀번호는 최소 5자리 입니다");
+  }
+
+  console.log("아이디?", mambersId);
 });
