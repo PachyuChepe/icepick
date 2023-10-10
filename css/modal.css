@@ -105,7 +105,7 @@
 
 .close:hover,
 .close:focus {
-  color: #000;
+  color:black;
   text-decoration: none;
   cursor: pointer;
 }
@@ -180,8 +180,8 @@
 
 /* 모달 닫기 버튼 스타일링 */
 #modalCloseButton1 {
-  color: white;
-  border-color: #dc3545;
+    color: #dc3545;
+    border-color: #dc3545;
 }
 
 #modalCloseButton1:hover,
