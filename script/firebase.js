@@ -117,7 +117,7 @@ sortedDocs.forEach((doc) => {
   let mbti_j = row["mbti_j"];
   let mbti_p = row["mbti_p"];
   // 카드 HTML 생성
-  let temp_html = `            
+  let temp_html = `
       <div class="col">
           <div class="card h-100 bg-transparent border-black text-white text-center">
               <img src="${image}" class="card-img-top" alt="...">
