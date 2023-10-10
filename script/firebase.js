@@ -1,8 +1,14 @@
-// Firebase SDK 라이브러리 가져오기
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+import {
+  getDocs,
+  doc,
+  deleteDoc,
+  updateDoc,
+  query,
+  orderBy,
+} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 // Firebase 구성 정보
 const firebaseConfig = {
@@ -14,11 +20,9 @@ const firebaseConfig = {
   appId: "1:44861350306:web:3294770f6384aed70ed2fb",
   measurementId: "G-EWJVC04VRL",
 };
-
 // Firebase 인스턴스 초기화
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
-
 // 등록 버튼 클릭 이벤트 핸들러
 $("#postingbtn").click(async function () {
   // 입력 필드 값 가져오기
@@ -38,7 +42,6 @@ $("#postingbtn").click(async function () {
   let mbti_j = $("#mbti_j").val();
   let mbti_p = $("#mbti_p").val();
   let comment = $("#comment").val();
-
   // 문서 객체 생성
   let doc = {
     image: image,
@@ -56,45 +59,68 @@ $("#postingbtn").click(async function () {
     mbti_j: mbti_j,
     mbti_p: mbti_p,
     comment: comment,
+    timestamp: new Date(),
   };
+
+  if (
+    !image ||
+    !mname ||
+    !lv ||
+    !dono ||
+    !skills ||
+    !mbti ||
+    !mbti_i ||
+    !mbti_e ||
+    !mbti_s ||
+    !mbti_n ||
+    !mbti_t ||
+    !mbti_f ||
+    !mbti_j ||
+    !mbti_p ||
+    !comment
+  )
+    return alert("모든 정보를 입력해주세요");
+
   // Firestore에 문서 추가
   await addDoc(collection(db, "mambers"), doc);
 
-  // 알림 메시지 표시
-  alert("저장 완료!");
-  window.location.reload();
-});
+  // Firebase에서 데이터 가져오기
+  let querySnapshot = await getDocs(query(collection(db, "mambers"), orderBy("timestamp")));
 
-// Firebase에서 데이터 가져오기
-let docs = await getDocs(collection(db, "mambers"));
-docs.forEach((doc) => {
-  let row = doc.data();
+  let sortedDocs = querySnapshot.docs.sort((a, b) => {
+    return a.data().timestamp - b.data().timestamp;
+  });
 
-  // 데이터 추출
-  let image = row["image"];
-  let mname = row["mname"];
-  let lv = row["lv"];
-  let dono = row["dono"];
-  let skills = row["skills"];
-  let mbti = row["mbti"];
-  let comment = row["comment"];
-  let mbti_i = row["mbti_i"];
-  let mbti_e = row["mbti_e"];
-  let mbti_s = row["mbti_s"];
-  let mbti_n = row["mbti_n"];
-  let mbti_t = row["mbti_t"];
-  let mbti_f = row["mbti_f"];
-  let mbti_j = row["mbti_j"];
-  let mbti_p = row["mbti_p"];
+  console.log("파이어베이스 관음", sortedDocs);
+  sortedDocs.forEach((doc) => {
+    let row = doc.data();
+    console.log(doc, "관음");
 
-  // 카드 HTML 생성
-  let temp_html = `            
+    // 데이터 추출
+    let image = row["image"];
+    let mname = row["mname"];
+    let lv = row["lv"];
+    let dono = row["dono"];
+    let skills = row["skills"];
+    let mbti = row["mbti"];
+    let comment = row["comment"];
+    let mbti_i = row["mbti_i"];
+    let mbti_e = row["mbti_e"];
+    let mbti_s = row["mbti_s"];
+    let mbti_n = row["mbti_n"];
+    let mbti_t = row["mbti_t"];
+    let mbti_f = row["mbti_f"];
+    let mbti_j = row["mbti_j"];
+    let mbti_p = row["mbti_p"];
+    // 카드 HTML 생성
+    let temp_html = `            
       <div class="col">
           <div class="card h-100 bg-transparent border-black text-white text-center">
               <img src="${image}" class="card-img-top" alt="...">
-                  <h5 class="card-title">${mname}</h5>
-                  <p class="card-text">${dono}</p>
+                  <h5 class="card-title show-button">${mname}</h5>
+                  <p class="delete-button" data-doc-id="${doc.id}">삭제</p>
                   <span class="burrow">
+                  <p class="card-text">${dono}</p>
                     <p class="user-lv">${lv}</p>
                     <p class="user-skills">${skills}</p>
                     <p class="user-mbti">${mbti}</p>
@@ -111,76 +137,85 @@ docs.forEach((doc) => {
             </div>
         </div>
       `;
-  // 카드 추가
-  $("#card").append(temp_html);
-});
+    // 카드 추가
+    $("#card").append(temp_html);
+  });
+  // 카드 이미지 클릭 시 모달 열기 이벤트
+  $(document).on("click", ".card-img-top", function () {
+    // 클릭한 이미지의 데이터 가져오기
+    const imageSrc = $(this).attr("src");
+    const cardTitle = $(this).siblings(".card-title").text();
+    const cardText = $(this).siblings(".card-text").text();
+    const userLv = $(this).closest(".card").find(".user-lv").text();
+    const userSkills = $(this).closest(".card").find(".user-skills").text();
+    const userMbti = $(this).closest(".card").find(".user-mbti").text();
+    const userComment = $(this).closest(".card").find(".user-comment").text();
+    const mbtiI = parseInt($(this).closest(".card").find(".user-mbti-i").text(), 10);
+    const mbtiE = parseInt($(this).closest(".card").find(".user-mbti-e").text(), 10);
+    const mbtiS = parseInt($(this).closest(".card").find(".user-mbti-s").text(), 10);
+    const mbtiN = parseInt($(this).closest(".card").find(".user-mbti-n").text(), 10);
+    const mbtiT = parseInt($(this).closest(".card").find(".user-mbti-t").text(), 10);
+    const mbtiF = parseInt($(this).closest(".card").find(".user-mbti-f").text(), 10);
+    const mbtiJ = parseInt($(this).closest(".card").find(".user-mbti-j").text(), 10);
+    const mbtiP = parseInt($(this).closest(".card").find(".user-mbti-p").text(), 10);
+    const mbtiData = {
+      mbtiI,
+      mbtiE,
+      mbtiS,
+      mbtiN,
+      mbtiT,
+      mbtiF,
+      mbtiJ,
+      mbtiP,
+    };
+    // DB 값을 로컬스토리지에 저장
+    // localStorage.setItem("mbtiData", JSON.stringify(mbtiData));
+    // 모달 창에 데이터 설정
+    $("#modalImage1").attr("src", imageSrc);
+    $("#modalTitle1").text(cardTitle);
+    $("#modalText1").text(cardText);
+    $("#modalUserLv").text(userLv);
+    $("#modalUserSkills").text(userSkills);
+    $("#modalUserMbti").text(userMbti);
+    $("#modalUserComment").text(userComment);
+    // 모달 창 열기
+    $("#modalContainer1").removeClass("hidden");
+    updateOctagonRadarChart(mbtiData);
+  });
+  // Octagon Radar Chart 업데이트 함수
+  function updateOctagonRadarChart(mbtiData) {
+    console.log(mbtiData, "MBTI 콘솔");
+    console.log(octagonRadarChart.data.datasets[0], "MBTI 데이터 갱신 확인 콘솔");
+    octagonRadarChart.data.datasets[0].data = [
+      mbtiData.mbtiE,
+      mbtiData.mbtiI,
+      mbtiData.mbtiN,
+      mbtiData.mbtiT,
+      mbtiData.mbtiJ,
+      mbtiData.mbtiP,
+      mbtiData.mbtiF,
+      mbtiData.mbtiS,
+    ];
+    octagonRadarChart.update();
+  }
+  // 맴버카드 모달 닫기 버튼 이벤트
+  $("#modalCloseButton1").click(function () {
+    // localStorage.clear();
+    // location.reload();
+    $("#modalContainer1").addClass("hidden");
+  });
 
-// 카드 이미지 클릭 시 모달 열기 이벤트
-$(document).on("click", ".card-img-top", function () {
-  // 클릭한 이미지의 데이터 가져오기
-  const imageSrc = $(this).attr("src");
-  const cardTitle = $(this).siblings(".card-title").text();
-  const cardText = $(this).siblings(".card-text").text();
-  const userLv = $(this).closest(".card").find(".user-lv").text();
-  const userSkills = $(this).closest(".card").find(".user-skills").text();
-  const userMbti = $(this).closest(".card").find(".user-mbti").text();
-  const userComment = $(this).closest(".card").find(".user-comment").text();
-  const mbtiI = parseInt($(this).closest(".card").find(".user-mbti-i").text(), 10);
-  const mbtiE = parseInt($(this).closest(".card").find(".user-mbti-e").text(), 10);
-  const mbtiS = parseInt($(this).closest(".card").find(".user-mbti-s").text(), 10);
-  const mbtiN = parseInt($(this).closest(".card").find(".user-mbti-n").text(), 10);
-  const mbtiT = parseInt($(this).closest(".card").find(".user-mbti-t").text(), 10);
-  const mbtiF = parseInt($(this).closest(".card").find(".user-mbti-f").text(), 10);
-  const mbtiJ = parseInt($(this).closest(".card").find(".user-mbti-j").text(), 10);
-  const mbtiP = parseInt($(this).closest(".card").find(".user-mbti-p").text(), 10);
-  const mbtiData = {
-    mbtiI,
-    mbtiE,
-    mbtiS,
-    mbtiN,
-    mbtiT,
-    mbtiF,
-    mbtiJ,
-    mbtiP,
-  };
+  // 삭제 버튼 클릭 이벤트 핸들러
+  $(document).on("click", ".delete-button", async function (event) {
+    const docId = $(event.target).attr("data-doc-id");
+    console.log("이벤트", docId);
 
-  // DB 값을 로컬스토리지에 저장
-  // localStorage.setItem("mbtiData", JSON.stringify(mbtiData));
-
-  // 모달 창에 데이터 설정
-  $("#modalImage1").attr("src", imageSrc);
-  $("#modalTitle1").text(cardTitle);
-  $("#modalText1").text(cardText);
-  $("#modalUserLv").text(userLv);
-  $("#modalUserSkills").text(userSkills);
-  $("#modalUserMbti").text(userMbti);
-  $("#modalUserComment").text(userComment);
-
-  // 모달 창 열기
-  $("#modalContainer1").removeClass("hidden");
-  updateOctagonRadarChart(mbtiData);
-});
-
-// Octagon Radar Chart 업데이트 함수
-function updateOctagonRadarChart(mbtiData) {
-  console.log(mbtiData, "MBTI 콘솔");
-  console.log(octagonRadarChart.data.datasets[0], "MBTI 데이터 갱신 확인 콘솔");
-  octagonRadarChart.data.datasets[0].data = [
-    mbtiData.mbtiE,
-    mbtiData.mbtiI,
-    mbtiData.mbtiN,
-    mbtiData.mbtiT,
-    mbtiData.mbtiJ,
-    mbtiData.mbtiP,
-    mbtiData.mbtiF,
-    mbtiData.mbtiS,
-  ];
-  octagonRadarChart.update();
-}
-
-// 맴버카드 모달 닫기 버튼 이벤트
-$("#modalCloseButton1").click(function () {
-  // localStorage.clear();
-  // location.reload();
-  $("#modalContainer1").addClass("hidden");
+    try {
+      await deleteDoc(doc(db, "mambers", docId));
+      alert("삭제성공");
+      window.location.reload();
+    } catch (error) {
+      alert("삭제실패");
+    }
+  });
 });
