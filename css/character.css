@@ -8,7 +8,7 @@
   background-color: #e8344e;
   width: 100px;
   border-radius: 10px;
-  padding: 5px 5px 5px 5px;
+  padding: 3px 5px 5px 10px;
   margin: auto;
 }
 
@@ -21,16 +21,4 @@
 
 .col {
   margin: 20px 20px 20px 20px;
-}
-
-.card .delete-button {
-  display: none;
-}
-
-.delete-button {
-  background-color: #e8344e;
-  width: 100px;
-  border-radius: 10px;
-  padding: 5px 5px 5px 5px;
-  margin: auto;
 }

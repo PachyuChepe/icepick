@@ -14,7 +14,6 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-
     <!-- 스크립트 및 스타일 시트 파일 링크 -->
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/slide.css" />
@@ -24,8 +23,6 @@
     <script defer src="../script/chat.js"></script>
     <script defer src="../script/slides.js"></script>
     <script defer src="../script/modal.js"></script>
-    <script defer src="../script/delBtn.js"></script>
-    <script defer src="../script/inputVerification.js"></script>
   </head>
 
   <body>
@@ -38,6 +35,7 @@
               <use xlink:href="#bootstrap"></use>
             </svg>
           </a>
+
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li>
               <a href="#" class="nav-link px-2 text-secondary"
@@ -63,86 +61,86 @@
                 <div class="mypostingbox" id="postingbox">
                   <!-- 팀 가입 양식 -->
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="image" placeholder="캐릭터 이미지 주소" />
+                    <input type="email" class="form-control" id="image" placeholder="캐릭터 이미지 주소" />
                     <label for="floatingInput">캐릭터 이미지 주소</label>
                   </div>
 
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="mname" placeholder="이름" />
+                    <input type="email" class="form-control" id="mname" placeholder="이름" />
                     <label for="floatingInput">이름</label>
                   </div>
 
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control numericInput" id="lv" placeholder="레벨(나이)" />
+                    <input type="email" class="form-control" id="lv" placeholder="레벨(나이)" />
                     <label for="floatingInput">레벨(나이)</label>
                   </div>
 
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control numericInput" id="dono" placeholder="도감번호" />
+                    <input type="email" class="form-control" id="dono" placeholder="도감번호" />
                     <label for="floatingInput">도감번호(생년월일)</label>
                   </div>
 
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="skills" placeholder="배운 기술" />
+                    <input type="email" class="form-control" id="skills" placeholder="배운 기술" />
                     <label for="floatingInput">배운 기술</label>
                   </div>
 
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="mbti" placeholder="MBTI" />
+                    <input type="email" class="form-control" id="mbti" placeholder="MBTI" />
                     <label for="floatingInput">MBTI</label>
                   </div>
 
                   <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_e" placeholder="E 수치" /><label
+                    <input type="email" class="form-control" id="mbti_e" placeholder="E 수치" /><label
                       for="floatingInput"
                       >외향형 E 수치</label
                     >
                   </div>
                   <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_i" placeholder="I 수치" /><label
+                    <input type="email" class="form-control" id="mbti_i" placeholder="I 수치" /><label
                       for="floatingInput"
                       >내향형 I 수치</label
                     >
                   </div>
                   <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_s" placeholder="S 수치" /><label
+                    <input type="email" class="form-control" id="mbti_s" placeholder="S 수치" /><label
                       for="floatingInput"
                       >감각형 S 수치</label
                     >
                   </div>
                   <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_n" placeholder="N 수치" /><label
+                    <input type="email" class="form-control" id="mbti_n" placeholder="N 수치" /><label
                       for="floatingInput"
                       >직관형 N 수치</label
                     >
                   </div>
                   <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_t" placeholder="T 수치" /><label
+                    <input type="email" class="form-control" id="mbti_t" placeholder="T 수치" /><label
                       for="floatingInput"
                       >사고형 T 수치</label
                     >
                   </div>
                   <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_f" placeholder="F 수치" /><label
+                    <input type="email" class="form-control" id="mbti_f" placeholder="F 수치" /><label
                       for="floatingInput"
                       >감정형 F 수치</label
                     >
                   </div>
                   <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_j" placeholder="J 수치" /><label
+                    <input type="email" class="form-control" id="mbti_j" placeholder="J 수치" /><label
                       for="floatingInput"
                       >판단형 J 수치</label
                     >
                   </div>
                   <div class="form-floating mb-3" style="display: inline-block">
-                    <input type="text" class="form-control numericInput" id="mbti_p" placeholder="P 수치" /><label
+                    <input type="email" class="form-control" id="mbti_p" placeholder="P 수치" /><label
                       for="floatingInput"
                       >인식형 P 수치</label
                     >
                   </div>
 
                   <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="comment" placeholder="comment" />
+                    <input type="email" class="form-control" id="comment" placeholder="comment" />
                     <label for="floatingInput">한마디</label>
                   </div>
 

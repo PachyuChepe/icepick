@@ -303,7 +303,6 @@
 
     $(document).on("click", ".card-img-top", function () {
       // 클릭한 이미지의 데이터 가져오기
-
       const imageSrc = $(this).attr("src");
       const cardTitle = $(this).siblings(".card-title").text(); // 예제로 card-title 클래스를 사용했습니다.
       const cardText = $(this).siblings(".card-text").text(); // 예제로 card-text 클래스를 사용했습니다.
@@ -350,8 +349,6 @@
       octagonRadarChart.update();
     }
 
-    const dataMemberId = element.currentTarget.getAttribute("data-member-id");
-    const selectUserData = await navSelectMember(dataMemberId);
     // 모달 닫기 버튼
     $("#modalCloseButton1").click(function () {
       // localStorage.clear();
@@ -368,14 +365,14 @@
 
   <div id="modalContainer1" class="hidden">
     <!-- id="modalContainer1" 추가 -->
-    <div id="modalContent1" data-member-id="${id}">
+    <div id="modalContent1">
       <!-- id="modalContent1" 추가 -->
       <div class="modal-header">
         <h2><span class="close" id="modalCloseButton1">&times;</span></h2>
         <!-- id="modalCloseButton1" 추가 -->
         <h3 id="signin1">팀원 소개</h3>
       </div>
-      <div class="mypostingbox" id="postingbox1" data-member-id="${id}">
+      <div class="mypostingbox" id="postingbox1">
         <!-- id="postingbox1" 추가 -->
         <!-- 이미지 표시를 위한 요소 -->
         <div>
@@ -400,7 +397,7 @@
         <div id="comment-container" style="display: none">
           <!-- 댓글 작성 폼 -->
           <form id="comment-form">
-            <input id="commentname" type="text" placeholder="닉네임을 입력하세요" />
+            <input id="nickname" type="text" placeholder="닉네임을 입력하세요" />
             <textarea id="comment-text" placeholder="댓글을 작성하세요"></textarea>
             <button type="submit">댓글 작성</button>
           </form>
@@ -426,14 +423,14 @@
     // 댓글 작성 폼 제출 시 댓글 추가
     document.getElementById("comment-form").addEventListener("submit", function (event) {
       event.preventDefault();
-      const commentname = document.getElementById("commentname").value;
+      const nickname = document.getElementById("nickname").value;
       const commentText = document.getElementById("comment-text").value;
 
-      if (commentname.trim() !== "" && commentText.trim() !== "") {
+      if (nickname.trim() !== "" && commentText.trim() !== "") {
         // 카드 추가
         let temp_html = `
                 <div class="comment">
-                    <p><strong>${commentname}:</strong> ${commentText}</p>
+                    <p><strong>${nickname}:</strong> ${commentText}</p>
                     <div class="comment-actions">
                         <button class="delete-button" onclick="deleteComment(this.parentNode.parentNode)">삭제</button>
                     </div>
@@ -443,7 +440,7 @@
         $("#comment-list").append(temp_html);
 
         // 입력 필드 초기화
-        document.getElementById("commentname").value = "";
+        document.getElementById("nickname").value = "";
         document.getElementById("comment-text").value = "";
       }
     });
