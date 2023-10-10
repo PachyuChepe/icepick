@@ -191,8 +191,9 @@
 }
 
 #octagonRadarChart {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 220px;
+  max-height: 220px;
+  justify-content: center;
 }
 
 .burrow {
@@ -221,11 +222,18 @@
 }
 
 .modalcharacterimgChart {
+  display: flex;
+  justify-content: center;
   background-color: rgba(255, 255, 255, 0.2);
   text-align: center;
   width: 450px;
   height: 220px;
-  padding-left: 50px;
+  /* padding-left: 50px; */
+  margin: 0 auto;
+}
+
+.modalcharacterimgChart img {
+  justify-content: center;
 }
 
 .modalbuttons {
