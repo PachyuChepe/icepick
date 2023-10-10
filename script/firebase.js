@@ -249,21 +249,4 @@ $("#CheeringBtn").on("click", async () => {
   } else {
     alert("비밀번호는 최소 4자리 입니다");
   }
-
-  // console.log("아이디?", mambersId);
 });
-
-// const mambersId = $("#member_id").data("doc-id");
-// console.log(mambersId, "계정?");
-// let querySnapshotComment = await getDocs(query(collection(db, "comments"), orderBy("timestamp")));
-
-// let sortedDocsComment = querySnapshotComment.docs.sort((a, b) => {
-//   return a.data().timestamp - b.data().timestamp;
-// });
-
-// sortedDocsComment.forEach((doc) => {
-//   let row = doc.data();
-//   console.log(doc, "코멘트 관음");
-//   console.log(row, "row 관음");
-//   console.log(doc.id, "찍히냐?");
-// });
