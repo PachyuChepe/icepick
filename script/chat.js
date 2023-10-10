@@ -7,17 +7,6 @@
 // mbtiData를 콘솔에 출력
 // console.log(mbtiData, "떳!!!!!!!냐!!!!!!!!!!");
 
-// 차트 스케일 관련 옵션 설정
-// Chart.defaults.scale.ticks.color = "black"; // 폰트 색상 변경
-// Chart.defaults.scale.grid.display = true; // 그리드 라인 표시
-// Chart.defaults.scale.grid.color = "gray"; // 그리드 라인 색상 변경
-// Chart.defaults.scale.ticks.fontSize = 3; // 폰트 크기 설정
-// Chart.defaults.color = "#000"; // 차트 전반적인 색상 설정
-// Chart.defaults.angleLines.color = "red"; // 각도 라인 색상 설정
-// Chart.defaults.plugins.legend.display = false; // 범례 숨김
-// Chart.defaults.scale.ticks.display = false; // 축 눈금 숨김
-// Chart.defaults.font = "10"; // 기본 폰트 크기 설정
-
 // 데이터 및 옵션 설정
 const data = {
   labels: ["E", "I", "N", "T", "J", "P", "F", "S"], // 라벨 설정

@@ -20,9 +20,11 @@ const firebaseConfig = {
   appId: "1:31781052233:web:bf3f7c3fd94939fa160498",
   measurementId: "G-GMSP950JXK",
 };
+
 // Firebase 인스턴스 초기화
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+
 // 등록 버튼 클릭 이벤트 핸들러
 $("#postingbtn").click(async function () {
   // 입력 필드 값 가져오기
@@ -32,6 +34,7 @@ $("#postingbtn").click(async function () {
   let dono = $("#dono").val();
   let skills = $("#skills").val();
   let mbti = $("#mbti").val();
+
   // 추가된 MBTI 세부 수치
   let mbti_i = $("#mbti_i").val();
   let mbti_e = $("#mbti_e").val();
@@ -42,6 +45,7 @@ $("#postingbtn").click(async function () {
   let mbti_j = $("#mbti_j").val();
   let mbti_p = $("#mbti_p").val();
   let comment = $("#comment").val();
+
   // 문서 객체 생성
   let doc = {
     image: image,
@@ -98,7 +102,6 @@ let sortedDocs = querySnapshot.docs.sort((a, b) => {
 
 sortedDocs.forEach((doc) => {
   let row = doc.data();
-  // console.log(doc, "관음");
 
   // 데이터 추출
   let image = row["image"];
@@ -116,6 +119,7 @@ sortedDocs.forEach((doc) => {
   let mbti_f = row["mbti_f"];
   let mbti_j = row["mbti_j"];
   let mbti_p = row["mbti_p"];
+
   // 카드 HTML 생성
   let temp_html = `
       <div class="col">
@@ -141,15 +145,16 @@ sortedDocs.forEach((doc) => {
             </div>
         </div>
       `;
+
   // 카드 추가
   $("#card").append(temp_html);
 });
+
 // 카드 이미지 클릭 시 모달 열기 이벤트
 $(document).on("click", ".card-img-top", function () {
   // 클릭한 이미지의 데이터 가져오기
   const imageSrc = $(this).attr("src");
   const cardTitle = $(this).siblings(".card-title").text();
-  // const cardText = $(this).siblings(".card-text").text();
   const cardText = $(this).closest(".card").find(".card-text").text();
   const userLv = $(this).closest(".card").find(".user-lv").text();
   const userSkills = $(this).closest(".card").find(".user-skills").text();
@@ -186,10 +191,12 @@ $(document).on("click", ".card-img-top", function () {
   $("#modalUserSkills").text(userSkills);
   $("#modalUserMbti").text(userMbti);
   $("#modalUserComment").text(userComment);
+
   // 모달 창 열기
   $("#modalContainer1").removeClass("hidden");
   updateOctagonRadarChart(mbtiData);
 });
+
 // Octagon Radar Chart 업데이트 함수
 function updateOctagonRadarChart(mbtiData) {
   console.log(mbtiData, "MBTI 콘솔");
