@@ -7,7 +7,7 @@
   border-radius: 5px;
 }
 
-.mypostingbox>button {
+.mypostingbox > button {
   width: 100%;
 }
 
@@ -191,13 +191,8 @@
 }
 
 #octagonRadarChart {
-<<<<<<< HEAD
-  max-width: 50%;
-  max-height: 50%;
-=======
   max-width: 200px;
   max-height: 200px;
->>>>>>> 8d1f15a4bb28b9268190c1a6c6f39236fb09b1de
 }
 
 .burrow {
