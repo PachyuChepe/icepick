@@ -218,22 +218,20 @@
 
 .modalText01 {
   background-color: rgba(255, 255, 255, 0.2);
- }
- 
- 
-  .modalcharacterimgChart {
-   background-color: rgba(255, 255, 255, 0.2);
-   align : center;
-   width: 450px;
-   height: 220px;
-   padding-left: 50px;
- }
- 
- .modalbuttons {
-   padding-left: 70px;
- }
- 
- .col{
-   cursor: pointer;
- }
- 
+}
+
+.modalcharacterimgChart {
+  background-color: rgba(255, 255, 255, 0.2);
+  align: center;
+  width: 450px;
+  height: 220px;
+  padding-left: 50px;
+}
+
+.modalbuttons {
+  padding-left: 70px;
+}
+
+.col {
+  cursor: pointer;
+}
