@@ -217,9 +217,9 @@ $(document).on("click", ".delete-button", async function (event) {
 
   try {
     await deleteDoc(doc(db, "mambers", docId));
-    alert("삭제성공");
+    alert("삭제 성공");
     window.location.reload();
   } catch (error) {
-    alert("삭제실패");
+    alert("삭제 실패");
   }
 });
