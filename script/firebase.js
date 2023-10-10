@@ -178,7 +178,10 @@ $(document).on("click", ".card-img-top", function () {
   // 모달 창에 데이터 설정
   $("#modalImage1").attr("src", imageSrc);
   $("#modalTitle1").text(cardTitle);
-  $("#modalText1").text(cardText);
+  const modalText1 = $("#modalText1");
+  modalText1.text(""); // 기존 내용 비우기
+  const link = $("<a>").attr("href", cardText).text(cardText);
+  modalText1.append(link); // 하이퍼링크 추가
   $("#modalUserLv").text(userLv);
   $("#modalUserSkills").text(userSkills);
   $("#modalUserMbti").text(userMbti);
