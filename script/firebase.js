@@ -218,6 +218,11 @@ $("#modalCloseButton1").click(function () {
   $("#modalContainer1").addClass("hidden");
 });
 
+// 맴버카드 모달 닫기 버튼 이벤트
+$("#modalCloseButton10").click(function () {
+  $("#modalContainer1").addClass("hidden");
+});
+
 // 삭제 버튼 클릭 이벤트 핸들러
 $(document).on("click", ".delete-button", async function (event) {
   const docId = $(event.target).attr("data-doc-id");
