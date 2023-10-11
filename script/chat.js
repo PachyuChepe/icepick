@@ -1,12 +1,3 @@
-// 로컬 스토리지에서 "mbtiData" 키로 저장된 데이터를 겟
-// const storedData = localStorage.getItem("mbtiData");
-
-// JSON 형식으로 저장된 데이터를 파싱하여 변수 mbtiData에 할당
-// const mbtiData = JSON.parse(storedData);
-
-// mbtiData를 콘솔에 출력
-// console.log(mbtiData, "떳!!!!!!!냐!!!!!!!!!!");
-
 // 데이터 및 옵션 설정
 const data = {
   labels: ["E", "I", "N", "T", "J", "P", "F", "S"], // 라벨 설정

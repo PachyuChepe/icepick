@@ -215,8 +215,6 @@ function updateOctagonRadarChart(mbtiData) {
 }
 // 맴버카드 모달 닫기 버튼 이벤트
 $("#modalCloseButton1").click(function () {
-  // localStorage.clear();
-  // location.reload();
   $("#modalContainer1").addClass("hidden");
 });
 
